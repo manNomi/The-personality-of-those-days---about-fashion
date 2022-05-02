@@ -23,20 +23,13 @@ class Ui():
 #########################################################################################
 #font 
 
-        fontMart = QtGui.QFont()
-        fontMart.setFamily("Nanum Gothic Coding")
-
 # color 
 
 #color - #A0B4E6 연파
 # #808080 회색
-        
-
-        fontDB = QFontDatabase()
-        fontDB.addApplicationFont('./Od크림라떼.ttf')
-
+    
         font = QtGui.QFont()
-        font.setFamily('HY엽서L')
+        font.setFamily('함초롬돋움')
         font.setPointSize(16)
         font.setWeight(75)
 
@@ -50,22 +43,31 @@ class Ui():
         closetBorder.setGeometry(20,10,1350,1270)
         closetBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
-        closetPicXY=[[100,30,144,320],[1150,30,144,320]]
-        logoPics=[]
-        for index in range(0,2):
-            closetPic=QtWidgets.QLabel(self.PageCloset)
-            closetPic.setGeometry(closetPicXY[index][0],closetPicXY[index][1],closetPicXY[index][2],closetPicXY[index][3])
-            closetPic.setStyleSheet("background-color:black")
-            logoPics.append(closetPic)
+      
+        closetPic=QtWidgets.QLabel(self.PageCloset)
+        closetPic.setGeometry(90,30,144,320)
+        closetPic.setStyleSheet("background-color:white")
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/closetLeft.PNG")
+        self.qPixmapVar=self.qPixmapVar.scaled(130,295)
+        closetPic.setPixmap(self.qPixmapVar)
+
+        closetPic2=QtWidgets.QLabel(self.PageCloset)
+        closetPic2.setGeometry(1150,30,170,320)
+        closetPic2.setStyleSheet("background-color:white")
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/closetRight.PNG")
+        self.qPixmapVar=self.qPixmapVar.scaled(160,272)
+        closetPic2.setPixmap(self.qPixmapVar)
+            
 
 
         closetAd=QtWidgets.QLabel(self.PageCloset)
         closetAd.setGeometry(290,220,810,160)
         closetAd.setStyleSheet("background-color:black")
-        logoPics.append(closetPic)
 
         font = QtGui.QFont()
-        font.setFamily('HY엽서L')
+        font.setFamily('함초롬돋움')
         font.setPointSize(16)
         font.setWeight(75)
 
@@ -85,19 +87,21 @@ class Ui():
         self.chooseCloset = QtWidgets.QTabWidget(self.PageCloset)
         self.chooseCloset.setGeometry(70,380, 1250, 850)
         font = QtGui.QFont()
-        font.setFamily('HY엽서L')
+        font.setFamily('함초롬돋움')
         font.setPointSize(16)
         font.setWeight(75)
+
         self.chooseCloset.setFont(font)
         self.chooseCloset.setObjectName("chooseCloset")
+
+        self.chooseTop = QtWidgets.QWidget()
+        self.chooseTop.setObjectName("chooseTop")
         
         self.chooseBottom = QtWidgets.QWidget()
         self.chooseBottom.setObjectName("chooseBottom")
-        self.chooseTop = QtWidgets.QWidget()
-        self.chooseTop.setObjectName("chooseTop")
 
-        self.chooseCloset.addTab(self.chooseBottom, "")
         self.chooseCloset.addTab(self.chooseTop, "")
+        self.chooseCloset.addTab(self.chooseBottom, "")
 
 
         self.chooseCloset.setTabText(self.chooseCloset.indexOf(self.chooseBottom),"하의")
@@ -176,8 +180,13 @@ class Ui():
         scheduleBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         schedulePic=QtWidgets.QLabel(self.PageSchedule)
-        schedulePic.setGeometry(625,30,144,320)
+        schedulePic.setGeometry(540,30,320,320)
         schedulePic.setStyleSheet("background-color:black")
+        
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/calander.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(320,320)
+        schedulePic.setPixmap(self.qPixmapVar)
 
         self.scheduleBtn=QtWidgets.QToolButton(self.PageSchedule)
         self.scheduleBtn.setGeometry(500,400,400,50)
@@ -337,10 +346,9 @@ class Ui():
 
 
 ##########################################################################################
-        self.stackedWidget.setCurrentWidget(self.PageOOTD)
+        self.stackedWidget.setCurrentWidget(self.PageCloset)
 
         self.MainWindow.setCentralWidget(self.centralwidget)
-
 
 
 
@@ -351,7 +359,7 @@ class Ui():
         self.dialogLabel = QtWidgets.QLabel(Dialog)
         self.dialogLabel.setGeometry(0, 0, 600, 300)
         font = QtGui.QFont()
-        font.setFamily("HY엽서L")
+        font.setFamily("함초롬돋움")
         font.setPointSize(18)
         self.dialogLabel.setFont(font)
         self.dialogLabel.setStyleSheet("color : red;")
@@ -392,7 +400,7 @@ class Ui():
         self.dialogLabel = QtWidgets.QLabel(Dialog)
         self.dialogLabel.setGeometry(0, 0, 600, 300)
         font = QtGui.QFont()
-        font.setFamily("HY엽서L")
+        font.setFamily("함초롬돋움")
         font.setPointSize(18)
         self.dialogLabel.setFont(font)
         self.dialogLabel.setStyleSheet("color : red;")
@@ -407,7 +415,7 @@ class Ui():
         self.dialogClosetText = QtWidgets.QLineEdit(Dialog)
         self.dialogClosetText.setGeometry(100 ,300, 600, 150)
         font = QtGui.QFont()
-        font.setFamily("Consolas")
+        font.setFamily("함초롬돋움")
         font.setPointSize(12)
         self.dialogClosetText.setFont(font)
         self.dialogClosetText.setStyleSheet("background-color:white ; border-style: solid; border-color : #a0b4e6; border-width: 2px;color:#a0b4e6")
@@ -418,13 +426,13 @@ class Ui():
         labelName = QtWidgets.QLabel(Dialog)
         labelName.setGeometry(185,170, 450, 100)
         font = QtGui.QFont()
-        font.setFamily("Consolas")
+        font.setFamily("함초롬돋움")
         font.setPointSize(12)
         labelName.setFont(font)
         labelName.setStyleSheet("background-color:white;color:#3057B9")
         labelName.setObjectName("label")
         font = QtGui.QFont()
-        font.setFamily('HY엽서L')
+        font.setFamily('함초롬돋움')
         font.setPointSize(16)
         font.setWeight(75)
         labelName.setFont(font)
@@ -452,7 +460,7 @@ class Ui():
         self.dialogLabel = QtWidgets.QLabel(Dialog)
         self.dialogLabel.setGeometry(0, 0, 600, 300)
         font = QtGui.QFont()
-        font.setFamily("HY엽서L")
+        font.setFamily("함초롬돋움")
         font.setPointSize(18)
         self.dialogLabel.setFont(font)
         self.dialogLabel.setStyleSheet("color : red;")
@@ -467,7 +475,7 @@ class Ui():
         self.dialogText = QtWidgets.QLineEdit(Dialog)
         self.dialogText.setGeometry(100 ,300, 600, 150)
         font = QtGui.QFont()
-        font.setFamily("Consolas")
+        font.setFamily("함초롬돋움")
         font.setPointSize(12)
         self.dialogText.setFont(font)
         self.dialogText.setStyleSheet("background-color:white ; border-style: solid; border-color : #a0b4e6; border-width: 2px;color:#a0b4e6")
@@ -478,13 +486,13 @@ class Ui():
         labelName = QtWidgets.QLabel(Dialog)
         labelName.setGeometry(185,170, 450, 100)
         font = QtGui.QFont()
-        font.setFamily("Consolas")
+        font.setFamily("함초롬돋움")
         font.setPointSize(12)
         labelName.setFont(font)
         labelName.setStyleSheet("background-color:white;color:#3057B9")
         labelName.setObjectName("label")
         font = QtGui.QFont()
-        font.setFamily('HY엽서L')
+        font.setFamily('함초롬돋움')
         font.setPointSize(16)
         font.setWeight(75)
         labelName.setFont(font)
@@ -509,7 +517,7 @@ class Ui():
         self.dialogLabel = QtWidgets.QLabel(Dialog)
         self.dialogLabel.setGeometry(0, 0, 600, 300)
         font = QtGui.QFont()
-        font.setFamily("HY엽서L")
+        font.setFamily("함초롬돋움")
         font.setPointSize(18)
         self.dialogLabel.setFont(font)
         self.dialogLabel.setStyleSheet("color : red;")
@@ -523,7 +531,7 @@ class Ui():
         self.dialogOOTDEdit = QtWidgets.QLineEdit(Dialog)
         self.dialogOOTDEdit.setGeometry(100 ,300, 600, 150)
         font = QtGui.QFont()
-        font.setFamily("Consolas")
+        font.setFamily("함초롬돋움")
         font.setPointSize(12)
         self.dialogOOTDEdit.setFont(font)
         self.dialogOOTDEdit.setStyleSheet("background-color:white ; border-style: solid; border-color : #a0b4e6; border-width: 2px;color:#a0b4e6")
@@ -532,13 +540,13 @@ class Ui():
         labelName = QtWidgets.QLabel(Dialog)
         labelName.setGeometry(185,170, 450, 100)
         font = QtGui.QFont()
-        font.setFamily("Consolas")
+        font.setFamily("함초롬돋움")
         font.setPointSize(12)
         labelName.setFont(font)
         labelName.setStyleSheet("background-color:white;color:#3057B9")
         labelName.setObjectName("label")
         font = QtGui.QFont()
-        font.setFamily('HY엽서L')
+        font.setFamily('함초롬돋움')
         font.setPointSize(16)
         font.setWeight(75)
         labelName.setFont(font)
