@@ -1,3 +1,4 @@
+from re import S
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 import sys
@@ -43,7 +44,6 @@ class Ui():
         closetBorder.setGeometry(20,10,1350,1270)
         closetBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
-      
         closetPic=QtWidgets.QLabel(self.PageCloset)
         closetPic.setGeometry(90,30,144,320)
         closetPic.setStyleSheet("background-color:white")
@@ -164,8 +164,6 @@ class Ui():
         self.groupBox.setLayout(self.verticalLayout)
         self.scrollBottom.setWidget(self.groupBox)
 
-
-
         
         self.stackedWidget.addWidget(self.PageCloset)
 
@@ -205,16 +203,10 @@ class Ui():
         self.calander.setObjectName("calander")
         font.setPointSize(8)
         self.calander.setFont(font)
-
-
         self.stackedWidget.addWidget(self.PageSchedule)
-
-       
 
 
 ##########################################################################################
-
-
         self.PageScheduleCheck=QtWidgets.QWidget()
         self.PageScheduleCheck.setObjectName("PageScheduleCheck")
 
@@ -243,15 +235,12 @@ class Ui():
         self.scheduleCheckBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         QtCore.QMetaObject.connectSlotsByName(self.PageScheduleCheck)
 
-
-
         scrollArea = QtWidgets.QScrollArea(self.PageScheduleCheck)
         scrollArea.setGeometry(100,370,1200,750)
         scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         scrollArea.setWidgetResizable(True)
         scrollArea.setObjectName("scrollArea3")
         scrollArea.setStyleSheet("color:#3057B9;border-style: solid ; border-radius: 3px; border-color:#A0B4E6; border-width:3px;")
-
 
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setGeometry(0, 0, 188, 119)
@@ -274,14 +263,8 @@ class Ui():
         self.groupBox.setLayout(self.verticalLayout)
         scrollArea.setWidget(self.groupBox)
 
-
-
         self.stackedWidget.addWidget(self.PageScheduleCheck)
 ##########################################################################################
-
-
-
-
 
         self.PageOOTD=QtWidgets.QWidget()
         self.PageOOTD.setObjectName("PageOOTD")
@@ -307,7 +290,6 @@ class Ui():
         QtCore.QMetaObject.connectSlotsByName(self.PageOOTD)
 
         
-        
         self.scrollAreaOOTD = QtWidgets.QScrollArea(self.PageOOTD)
         self.scrollAreaOOTD.setGeometry(100,400,1230,800)
         self.scrollAreaOOTD.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
@@ -332,21 +314,132 @@ class Ui():
         self.verticalLayoutOOTD.setSpacing(50)
         self.verticalLayoutOOTD.setVerticalSpacing(100)
 
-        self.groupBoxOOTD.setLayout(self.verticalLayoutOOTD)
-        self.scrollAreaOOTD.setWidget(self.groupBoxOOTD)
+        self.ootdBtn=QtWidgets.QPushButton(self.PageOOTD)
+        self.ootdBtn.setGeometry(40,40,40,40)
+
+###############################################################################################################
+
+        self.PageplayList=QtWidgets.QWidget()
+        self.PageplayList.setObjectName("PageplayList")
+
+        playListBorder=QtWidgets.QLabel(self.PageplayList)
+        playListBorder.setGeometry(20,10,1350,1270)
+        playListBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
+
+        playListPic=QtWidgets.QLabel(self.PageplayList)
+        playListPic.setGeometry(400,100,640,400)
+        playListPic.setStyleSheet("background-color:black")
+        
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/playList.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(640,400)
+        playListPic.setPixmap(self.qPixmapVar)
+
+        self.insertVideoBtn=QtWidgets.QToolButton(self.PageplayList)
+        self.insertVideoBtn.setGeometry(500,900,400,50)
+        self.insertVideoBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#3057B9 ; border-width:3px; color: #3057B9 ;background-color: white")
+        self.insertVideoBtn.setFont(font)
+        self.insertVideoBtn.setText("음악추가")
+        self.insertVideoBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        QtCore.QMetaObject.connectSlotsByName(self.PageplayList)
+        self.stackedWidget.addWidget(self.PageplayList)
+
+        self.alertPlayBtn=QtWidgets.QToolButton(self.PageplayList)
+        self.alertPlayBtn.setGeometry(950,50,150,150)
+        self.alertPlayBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#ffffff ; border-width:3px; color: #3057B9 ;background-color: white")
+        self.alertPlayBtn.setIcon(QtGui.QIcon("image/say.png"))
+        self.alertPlayBtn.setIconSize(QtCore.QSize(150,150))
+        self.alertPlayBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        QtCore.QMetaObject.connectSlotsByName(self.PageplayList)
+        self.stackedWidget.addWidget(self.PageplayList)
+
+        self.musicName=QtWidgets.QLabel(self.PageplayList)
+        self.musicName.setGeometry(200,600,900,100)
+        self.musicName.setStyleSheet("background-color:black")
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/playListBar.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(946,100)
+        self.musicName.setPixmap(self.qPixmapVar)
+
+        self.videoName=QtWidgets.QLabel(self.PageplayList)
+        self.videoName.setGeometry(450,600,1200,100)
+        font = QtGui.QFont()
+        self.videoName.setStyleSheet("background-color:#00ffffff ; color:#000000;")
+        font.setPointSize(15)
+        self.videoName.setFont(font)
+        self.videoName.setText("슈프림팀 – 그땐 그땐 그땐")
+
+
+        self.playMusicBtns=[]
+        for index in range(0,4):
+            dummyplayBtn=QtWidgets.QToolButton(self.PageplayList)
+            dummyplayBtn.setGeometry(300+index*100,800,60,60)
+            dummyplayBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#ffffff ; border-width:3px; color: #ffffff ;background-color: white")
+            dummyplayBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+            QtCore.QMetaObject.connectSlotsByName(self.PageplayList)
+            self.playMusicBtns.append(dummyplayBtn)
+
+
+        self.playMusicBtns[0].setIcon(QtGui.QIcon("image/play.png"))
+        self.playMusicBtns[0].setIconSize(QtCore.QSize(60,60))
+
+        self.playMusicBtns[1].setIcon(QtGui.QIcon("image/stop.png"))
+        self.playMusicBtns[1].setIconSize(QtCore.QSize(60,60))
+
+        self.playMusicBtns[2].setIcon(QtGui.QIcon("image/presentStop.png"))
+        self.playMusicBtns[2].setIconSize(QtCore.QSize(60,60))
+
+        self.playMusicBtns[3].setIcon(QtGui.QIcon("image/nextMusic.png"))
+        self.playMusicBtns[3].setIconSize(QtCore.QSize(60,60))
+
+        self.horizontalSlider = QtWidgets.QSlider(self.PageplayList)
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setGeometry(900, 805, 200, 50)
+        self.horizontalSlider.setStyleSheet("background-color:white")
+        self.horizontalSlider.setObjectName("horizontalSlider")
+
+        musicVolume=QtWidgets.QLabel(self.PageplayList)
+        musicVolume.setGeometry(800,800,60,60)
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/volume.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(60,60)
+        musicVolume.setPixmap(self.qPixmapVar)
+
+
+        self.stackedWidget.addWidget(self.PageplayList)
+
+        
+##########################################################################################
 
 
 
+        self.PageGuide=QtWidgets.QWidget()
+        self.PageGuide.setObjectName("PageGuide")
+
+        playListBorder=QtWidgets.QLabel(self.PageGuide)
+        playListBorder.setGeometry(20,10,1350,1270)
+        playListBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
+
+        self.videoPlay=QtWidgets.QFrame(self.PageGuide)
+        self.videoPlay.setGeometry(200,180,1000,900)
+        self.videoPlay.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white;")
 
 
-        self.stackedWidget.addWidget(self.PageOOTD)
-
-
+        self.stackedWidget.addWidget(self.PageGuide)
 
 
 
 ##########################################################################################
-        self.stackedWidget.setCurrentWidget(self.PageCloset)
+
+
+
+        self.groupBoxOOTD.setLayout(self.verticalLayoutOOTD)
+        self.scrollAreaOOTD.setWidget(self.groupBoxOOTD)
+        self.stackedWidget.addWidget(self.PageOOTD)
+
+
+##########################################################################################
+        self.stackedWidget.setCurrentWidget(self.PageplayList)
 
         self.MainWindow.setCentralWidget(self.centralwidget)
 
@@ -561,11 +654,97 @@ class Ui():
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
 
+    def dialogError(self,Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(800,700)
+        Dialog.setStyleSheet("background-color : white;")
+        self.dialogLabel = QtWidgets.QLabel(Dialog)
+        self.dialogLabel.setGeometry(0, 0, 600, 300)
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(18)
+        self.dialogLabel.setFont(font)
+        self.dialogLabel.setStyleSheet("color : red;")
+        self.dialogLabel.setObjectName("label")
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        picture=QtWidgets.QLabel(Dialog)
+        picture.setGeometry(0,0,800,700)
 
+    
+    def dialogSmallMusic(self,Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(800,300)
+        Dialog.setStyleSheet("background-color : white;")
+        self.dialogLabel = QtWidgets.QLabel(Dialog)
+        self.dialogLabel.setGeometry(0, 0, 600, 300)
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(18)
+        self.dialogLabel.setFont(font)
+        self.dialogLabel.setStyleSheet("color : red;")
+        self.dialogLabel.setObjectName("label")
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        picture=QtWidgets.QLabel(Dialog)
+        picture.setGeometry(0,0,800,700)
+
+        dialogBorder=QtWidgets.QLabel(Dialog)
+        dialogBorder.setGeometry(20,10,760,280)
+        dialogBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
+
+        self.musicName=QtWidgets.QLabel(Dialog)
+        self.musicName.setGeometry(80,50,650,100)
+        self.musicName.setStyleSheet("background-color:black")
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/playListBar.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(683,100)
+        self.musicName.setPixmap(self.qPixmapVar)
+
+        self.videoName=QtWidgets.QLabel(Dialog)
+        self.videoName.setGeometry(270,50,300,100)
+        font = QtGui.QFont()
+        self.videoName.setStyleSheet("background-color:#00ffffff ; color:#000000;")
+        font.setPointSize(10)
+        self.videoName.setFont(font)
+        self.videoName.setText("슈프림팀 – 그땐 그땐 그땐")
+
+
+        self.playMusicBtns=[]
+        for index in range(0,4):
+            dummyplayBtn=QtWidgets.QToolButton(Dialog)
+            dummyplayBtn.setGeometry(80+index*50,200,30,30)
+            dummyplayBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#ffffff ; border-width:3px; color: #ffffff ;background-color: white")
+            dummyplayBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+            QtCore.QMetaObject.connectSlotsByName(Dialog)
+            self.playMusicBtns.append(dummyplayBtn)
+
+        self.playMusicBtns[0].setIcon(QtGui.QIcon("image/play.png"))
+        self.playMusicBtns[0].setIconSize(QtCore.QSize(60,60))
+
+        self.playMusicBtns[1].setIcon(QtGui.QIcon("image/stop.png"))
+        self.playMusicBtns[1].setIconSize(QtCore.QSize(60,60))
+
+        self.playMusicBtns[2].setIcon(QtGui.QIcon("image/presentStop.png"))
+        self.playMusicBtns[2].setIconSize(QtCore.QSize(60,60))
+
+        self.playMusicBtns[3].setIcon(QtGui.QIcon("image/nextMusic.png"))
+        self.playMusicBtns[3].setIconSize(QtCore.QSize(60,60))
+
+        self.horizontalSlider = QtWidgets.QSlider(Dialog)
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setGeometry(500, 200, 200, 30)
+        self.horizontalSlider.setStyleSheet("background-color:white")
+        self.horizontalSlider.setObjectName("horizontalSlider")
+
+        musicVolume=QtWidgets.QLabel(Dialog)
+        musicVolume.setGeometry(400,200,30,30)
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/volume.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(30,30)
+        musicVolume.setPixmap(self.qPixmapVar)
 
     
 
-        
+
 
 
 if __name__=="__main__":
@@ -573,7 +752,7 @@ if __name__=="__main__":
     Main=Ui()
     
     dialog=QtWidgets.QDialog()
-    Main.dialogOOTDCheck(dialog)
+    Main.dialogSmallMusic(dialog)
     dialog.show()
 
     Main.MainWindow.show()
