@@ -1,10 +1,11 @@
-from re import S
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import *
 from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import*
+from PyQt5 import uic
+from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
-from PyQt5.QtGui import QFontDatabase
-from PyQt5.QtGui import QFont
-from PyQt5.QtCore import Qt
+
 
 class Ui():
     
@@ -33,7 +34,48 @@ class Ui():
         font.setFamily('함초롬돋움')
         font.setPointSize(16)
         font.setWeight(75)
+#########################################################################################
 
+        #PageMain
+        self.PageMain=QtWidgets.QWidget()
+        self.PageMain.setObjectName("PageMain")
+
+        mainBorder=QtWidgets.QLabel(self.PageMain)
+        mainBorder.setGeometry(20,10,771,933)
+        mainBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
+
+        self.mainPic=QtWidgets.QLabel(self.PageMain)
+        self.mainPic.setGeometry(230,40,330,335)
+        self.mainPic.setStyleSheet("background-color:white")
+        
+        
+        mainBtnXY=[[310,530,170,50],[310,590,170,50],[310,650,170,50],[310,710,170,50]]
+        mainBtnText=['나만의 closet','ootd 기록','playlist','가이드 영상']
+        self.mainBtns=[]
+        for index in range(0,4):
+            mainBtn=QtWidgets.QToolButton(self.PageMain)
+            mainBtn.setGeometry(mainBtnXY[index][0],mainBtnXY[index][1],mainBtnXY[index][2],mainBtnXY[index][3])
+            mainBtn.setStyleSheet("background-color:white;border-style: solid;border-color: #A0B4E6;border-width: 3px;color:#3057B9;border-radius: 10px")
+            mainBtn.setText(mainBtnText[index])
+            mainBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+            font.setPointSize(10)
+            mainBtn.setFont(font)
+
+            self.mainBtns.append(mainBtn)
+
+        self.mainBackBtn=QtWidgets.QPushButton(self.PageMain)
+        self.mainBackBtn.setGeometry(40,40,40,40)
+        self.mainBackBtn.setIcon(QtGui.QIcon("image/back.png"))
+        self.mainBackBtn.setIconSize(QtCore.QSize(40,40))
+        self.mainBackBtn.setStyleSheet("border-style: solid; border-color : white; border-width: 0px;color:white;")
+        self.mainBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+
+        
+
+        self.stackedWidget.addWidget(self.PageMain)
+
+
+            
 
 #########################################################################################
 #pageCloset
@@ -41,7 +83,7 @@ class Ui():
         self.PageCloset.setObjectName("PageCloset")
 
         closetBorder=QtWidgets.QLabel(self.PageCloset)
-        closetBorder.setGeometry(20,10,771,1270)
+        closetBorder.setGeometry(20,10,771,933)
         closetBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         closetPic=QtWidgets.QLabel(self.PageCloset)
@@ -77,8 +119,8 @@ class Ui():
         for index in range(0,4):
             closetBtn=QtWidgets.QToolButton(self.PageCloset)
             closetBtn.setGeometry(closetPicXY[index][0],closetPicXY[index][1],closetPicXY[index][2],closetPicXY[index][3])
-            closetBtn.setStyleSheet("background-color:white;border-style: solid;border-color: #A0B4E6;border-width: 5px;color:#3057B9")
             closetBtn.setText(closetBtnText[index])
+            closetBtn.setStyleSheet("background-color:white;border-style: solid;border-color: #A0B4E6;border-width: 3px;color:#3057B9;border-radius: 10px")
             closetBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
             closetBtn.setFont(font)
 
@@ -116,15 +158,15 @@ class Ui():
         self.scrollTop.setWidgetResizable(True)
         self.scrollTop.setObjectName("scrollTop")
 
-        self.scrollTopWidgetContents = QtWidgets.QWidget()
-        self.scrollTopWidgetContents.setGeometry(0, 0, 107, 87)
-        self.scrollTopWidgetContents.setObjectName("scrollTopWidgetContents")
+        self.scrollTopCont = QtWidgets.QWidget()
+        self.scrollTopCont.setGeometry(0, 0, 107, 87)
+        self.scrollTopCont.setObjectName("scrollTopCont")
 
-        self.groupBox = QtWidgets.QGroupBox(self.scrollTopWidgetContents)
-        self.groupBox.setGeometry(0, 10, 103, 59)
-        self.groupBox.setObjectName("groupBox")
+        self.groupBoxTop = QtWidgets.QGroupBox(self.scrollTopCont)
+        self.groupBoxTop.setGeometry(0, 10, 103, 59)
+        self.groupBoxTop.setObjectName("groupBoxTop")
 
-        self.horizontal_Top = QtWidgets.QWidget(self.groupBox)
+        self.horizontal_Top = QtWidgets.QWidget(self.groupBoxTop)
         self.horizontal_Top.setGeometry(20, 20, 560,500)
         self.horizontal_Top.setObjectName("horizontal_Top")
 
@@ -134,8 +176,8 @@ class Ui():
         self.verticalLayout.setSpacing(50)
         self.verticalLayout.setVerticalSpacing(100)
 
-        self.groupBox.setLayout(self.verticalLayout)
-        self.scrollTop.setWidget(self.groupBox)
+        self.groupBoxTop.setLayout(self.verticalLayout)
+        self.scrollTop.setWidget(self.groupBoxTop)
 
         self.scrollBottom = QtWidgets.QScrollArea(self.chooseBottom)
         self.scrollBottom.setGeometry(10,10,694,577)
@@ -147,11 +189,11 @@ class Ui():
         self.scrollBottomWidgetContents.setGeometry(0, 0, 107, 87)
         self.scrollBottomWidgetContents.setObjectName("scrollBottomWidgetContents")
 
-        self.groupBox = QtWidgets.QGroupBox(self.scrollBottomWidgetContents)
-        self.groupBox.setGeometry(0, 10, 103, 59)
-        self.groupBox.setObjectName("groupBox")
+        self.groupBoxBot = QtWidgets.QGroupBox(self.scrollBottomWidgetContents)
+        self.groupBoxBot.setGeometry(0, 10, 103, 59)
+        self.groupBoxBot.setObjectName("groupBoxBot")
 
-        self.horizontal_Top = QtWidgets.QWidget(self.groupBox)
+        self.horizontal_Top = QtWidgets.QWidget(self.groupBoxBot)
         self.horizontal_Top.setGeometry(20, 20, 560,500)
         self.horizontal_Top.setObjectName("horizontal_Top")
 
@@ -161,8 +203,16 @@ class Ui():
         self.verticalLayout.setSpacing(50)
         self.verticalLayout.setVerticalSpacing(100)
 
-        self.groupBox.setLayout(self.verticalLayout)
-        self.scrollBottom.setWidget(self.groupBox)
+        self.groupBoxBot.setLayout(self.verticalLayout)
+        self.scrollBottom.setWidget(self.groupBoxBot)
+
+        self.closetBackBtn=QtWidgets.QPushButton(self.PageCloset)
+        self.closetBackBtn.setGeometry(40,40,40,40)
+        self.closetBackBtn.setIcon(QtGui.QIcon("image/back.png"))
+        self.closetBackBtn.setIconSize(QtCore.QSize(40,40))
+        self.closetBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
+        self.closetBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+
 
         
         self.stackedWidget.addWidget(self.PageCloset)
@@ -204,6 +254,14 @@ class Ui():
         font.setPointSize(8)
         self.calander.setFont(font)
         self.stackedWidget.addWidget(self.PageSchedule)
+
+        self.scheduleBackBtn=QtWidgets.QPushButton(self.PageSchedule)
+        self.scheduleBackBtn.setGeometry(40,40,40,40)
+        self.scheduleBackBtn.setIcon(QtGui.QIcon("image/back.png"))
+        self.scheduleBackBtn.setIconSize(QtCore.QSize(40,40))
+        self.scheduleBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
+        self.scheduleBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+
 
 
 ##########################################################################################
@@ -265,6 +323,14 @@ class Ui():
         self.verticalLayout.setSpacing(50)
         self.verticalLayout.setVerticalSpacing(100)
 
+        self.scheduleCheckBackBtn=QtWidgets.QPushButton(self.PageScheduleCheck)
+        self.scheduleCheckBackBtn.setGeometry(40,40,40,40)
+        self.scheduleCheckBackBtn.setIcon(QtGui.QIcon("image/back.png"))
+        self.scheduleCheckBackBtn.setIconSize(QtCore.QSize(40,40))
+        self.scheduleCheckBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
+        self.scheduleCheckBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+
+
         self.groupBox.setLayout(self.verticalLayout)
         scrollArea.setWidget(self.groupBox)
 
@@ -319,8 +385,14 @@ class Ui():
         self.verticalLayoutOOTD.setSpacing(50)
         self.verticalLayoutOOTD.setVerticalSpacing(100)
 
-        self.ootdBtn=QtWidgets.QPushButton(self.PageOOTD)
-        self.ootdBtn.setGeometry(40,40,40,40)
+        self.ootdBackBtn=QtWidgets.QPushButton(self.PageOOTD)
+        self.ootdBackBtn.setGeometry(40,40,40,40)
+        self.ootdBackBtn.setIcon(QtGui.QIcon("image/back.png"))
+        self.ootdBackBtn.setIconSize(QtCore.QSize(40,40))
+        self.ootdBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
+        self.ootdBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+
+
 
 ###############################################################################################################
 
@@ -410,6 +482,13 @@ class Ui():
         self.qPixmapVar=self.qPixmapVar.scaled(34,44)
         musicVolume.setPixmap(self.qPixmapVar)
 
+        self.playBackBtn=QtWidgets.QPushButton(self.PageplayList)
+        self.playBackBtn.setGeometry(40,40,40,40)
+        self.playBackBtn.setIcon(QtGui.QIcon("image/back.png"))
+        self.playBackBtn.setIconSize(QtCore.QSize(40,40))
+        self.playBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
+        self.playBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+
 
         self.stackedWidget.addWidget(self.PageplayList)
 
@@ -428,6 +507,15 @@ class Ui():
         self.videoPlay=QtWidgets.QFrame(self.PageGuide)
         self.videoPlay.setGeometry(114,132,571,661)
         self.videoPlay.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white;")
+
+        self.guideBackBtn=QtWidgets.QPushButton(self.PageGuide)
+        self.guideBackBtn.setGeometry(40,40,40,40)
+        self.guideBackBtn.setStyleSheet("border-style: solid; border-color : white; border-width: 0px;color:white;")
+
+        self.guideBackBtn.setIcon(QtGui.QIcon("image/back.png"))
+        self.guideBackBtn.setIconSize(QtCore.QSize(40,40))
+
+        self.guideBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
 
         self.stackedWidget.addWidget(self.PageGuide)
@@ -658,21 +746,23 @@ class Ui():
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
 
-    def dialogError(self,Dialog):
+    def dialogError(self,Dialog,text):
         Dialog.setObjectName("Dialog")
         Dialog.resize(800,700)
+        dialogBorder=QtWidgets.QLabel(Dialog)
+        dialogBorder.setGeometry(20,10,760,660)
+        dialogBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
         Dialog.setStyleSheet("background-color : white;")
         self.dialogLabel = QtWidgets.QLabel(Dialog)
-        self.dialogLabel.setGeometry(0, 0, 600, 300)
+        self.dialogLabel.setGeometry(340, 180, 200, 300)
         font = QtGui.QFont()
         font.setFamily("함초롬돋움")
         font.setPointSize(18)
         self.dialogLabel.setFont(font)
+        self.dialogLabel.setText(text)
         self.dialogLabel.setStyleSheet("color : red;")
         self.dialogLabel.setObjectName("label")
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
-        picture=QtWidgets.QLabel(Dialog)
-        picture.setGeometry(0,0,800,700)
+       
 
     
     def dialogSmallMusic(self,Dialog):
@@ -746,6 +836,62 @@ class Ui():
         self.qPixmapVar=self.qPixmapVar.scaled(30,30)
         musicVolume.setPixmap(self.qPixmapVar)
 
+
+    def insertCloset(self,value,data,list):
+
+        if value==1:
+            self.scrollTopCont = QtWidgets.QWidget()
+            self.scrollTopCont.setGeometry(0, 0, 188, 119)
+            self.scrollTopCont.setObjectName("scrollTop")
+
+            self.groupBoxTop = QtWidgets.QGroupBox(self.scrollTopCont)
+            self.groupBoxTop.setGeometry(0, 10, 181, 81)
+            self.groupBoxTop.setObjectName("groupBoxTop")
+
+            self.verticalLayoutVideoWidget2 = QtWidgets.QWidget(self.groupBoxTop)
+            self.verticalLayoutVideoWidget2.setGeometry(20, 20, 980,680)
+            self.verticalLayoutVideoWidget2.setObjectName("verticalLayoutVideoWidget2")
+
+            self.verticalLayoutVideo2 = QtWidgets.QFormLayout(self.verticalLayoutVideoWidget2)
+            self.verticalLayoutVideo2.setContentsMargins(0, 0, 0, 0)
+            self.verticalLayoutVideo2.setObjectName("verticalLayoutVideo2")
+            self.verticalLayoutVideo2.setSpacing(10)
+            self.verticalLayoutVideo2.setVerticalSpacing(100)
+
+            self.groupBoxTop.setLayout(self.verticalLayoutVideo2)
+            self.scrollTop.setWidget(self.groupBoxTop)
+
+            value=data
+
+            self.closetImageBtn=[]
+
+            self.closetImageBtn.clear()
+            print("값:"+str(data))
+            print(len(value))
+            for index in range(0,len(list)):
+                font = QtGui.QFont()
+                font.setFamily("Bebas Neue")
+                font.setPointSize(9)
+                closetImagesTop=QtWidgets.QToolButton(self.verticalLayoutVideoWidget2)
+                qPixmapVar = QPixmap()
+                image=str("closet_top/"+data+".PNG")
+                print(image)
+                self.qPixmapVar.load(image)
+                qPixmapVar=qPixmapVar.scaled(162, 90)
+                icon = QIcon() # QIcon 생성
+                icon.addPixmap(qPixmapVar)
+                closetImagesTop.setIcon(icon)
+                closetImagesTop.setIconSize(QtCore.QSize(162, 90))
+                closetImagesTop.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
+                closetImagesTop.setFont(font)
+                closetImagesTop.setText(value[index][0])
+                closetImagesTop.setFixedWidth(162)
+                closetImagesTop.setFixedHeight(90)
+                closetImagesTop.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                self.verticalLayoutVideo2.addWidget(closetImagesTop)
+
+                self.closetImageBtn.append(closetImagesTop)
+
     
 
 
@@ -754,10 +900,10 @@ class Ui():
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     Main=Ui()
-    Main.stackedWidget.setCurrentWidget(Main.PageGuide)
+    Main.stackedWidget.setCurrentWidget(Main.PageMain)
 
     dialog=QtWidgets.QDialog()
-    Main.dialogSmallMusic(dialog)
+    Main.dialogError(dialog,"error")
     dialog.show()
 
     Main.MainWindow.show()
