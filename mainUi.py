@@ -10,15 +10,15 @@ class Ui():
     
     def __init__(self):
         self.MainWindow=QtWidgets.QMainWindow()
-        self.MainWindow.setGeometry(800,60,1400,1350)
-        self.MainWindow.setMinimumSize(1400,1350)
-        self.MainWindow.setMaximumSize(1400,1350)
+        self.MainWindow.setGeometry(800,60,800,950)
+        self.MainWindow.setMinimumSize(800,950)
+        self.MainWindow.setMaximumSize(800,950)
         self.MainWindow.setStyleSheet("background-color : white;")
 
         self.centralwidget = QtWidgets.QWidget(self.MainWindow)
 
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setGeometry(0,0,1500,1600)
+        self.stackedWidget.setGeometry(0,0,857,1176)
 
         self.stackedWidget.setObjectName("stackedWidget")
 #########################################################################################
@@ -41,29 +41,29 @@ class Ui():
         self.PageCloset.setObjectName("PageCloset")
 
         closetBorder=QtWidgets.QLabel(self.PageCloset)
-        closetBorder.setGeometry(20,10,1350,1270)
+        closetBorder.setGeometry(20,10,771,1270)
         closetBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         closetPic=QtWidgets.QLabel(self.PageCloset)
-        closetPic.setGeometry(90,30,144,320)
+        closetPic.setGeometry(51,22,82,235)
         closetPic.setStyleSheet("background-color:white")
         self.qPixmapVar = QPixmap()
         self.qPixmapVar.load("image/closetLeft.PNG")
-        self.qPixmapVar=self.qPixmapVar.scaled(130,295)
+        self.qPixmapVar=self.qPixmapVar.scaled(82,235)
         closetPic.setPixmap(self.qPixmapVar)
 
         closetPic2=QtWidgets.QLabel(self.PageCloset)
-        closetPic2.setGeometry(1150,30,170,320)
+        closetPic2.setGeometry(657,22,97,235)
         closetPic2.setStyleSheet("background-color:white")
         self.qPixmapVar = QPixmap()
         self.qPixmapVar.load("image/closetRight.PNG")
-        self.qPixmapVar=self.qPixmapVar.scaled(160,272)
+        self.qPixmapVar=self.qPixmapVar.scaled(97,235)
         closetPic2.setPixmap(self.qPixmapVar)
             
 
 
         closetAd=QtWidgets.QLabel(self.PageCloset)
-        closetAd.setGeometry(290,220,810,160)
+        closetAd.setGeometry(165,161,462,117)
         closetAd.setStyleSheet("background-color:black")
 
         font = QtGui.QFont()
@@ -71,7 +71,7 @@ class Ui():
         font.setPointSize(16)
         font.setWeight(75)
 
-        closetPicXY=[[280,30,384,80],[730,30,384,80],[280,120,384,80],[730,120,384,80]]
+        closetPicXY=[[190,30,170,50],[420,30,170,50],[190,100,170,50],[420,100,170,50]]
         closetBtnText=['상의 추가','하의 추가','선택','삭제']
         self.closetBtns=[]
         for index in range(0,4):
@@ -85,7 +85,7 @@ class Ui():
             self.closetBtns.append(closetBtn)
 
         self.chooseCloset = QtWidgets.QTabWidget(self.PageCloset)
-        self.chooseCloset.setGeometry(70,380, 1250, 850)
+        self.chooseCloset.setGeometry(40,279, 714, 625)
         font = QtGui.QFont()
         font.setFamily('함초롬돋움')
         font.setPointSize(16)
@@ -111,21 +111,21 @@ class Ui():
         self.chooseCloset.setStyleSheet("QTabWidget::pane{border-style: solid; border-width: 3px;border-color:#808080}\nQTabBar::tab{ border-style: solid; border-width: 3px;border-color:#808080;color:#808080}")
 
         self.scrollTop = QtWidgets.QScrollArea(self.chooseTop)
-        self.scrollTop.setGeometry(10,10,1215,785)
+        self.scrollTop.setGeometry(10,10,694,577)
         self.scrollTop.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.scrollTop.setWidgetResizable(True)
         self.scrollTop.setObjectName("scrollTop")
 
         self.scrollTopWidgetContents = QtWidgets.QWidget()
-        self.scrollTopWidgetContents.setGeometry(0, 0, 188, 119)
+        self.scrollTopWidgetContents.setGeometry(0, 0, 107, 87)
         self.scrollTopWidgetContents.setObjectName("scrollTopWidgetContents")
 
         self.groupBox = QtWidgets.QGroupBox(self.scrollTopWidgetContents)
-        self.groupBox.setGeometry(0, 10, 181, 81)
+        self.groupBox.setGeometry(0, 10, 103, 59)
         self.groupBox.setObjectName("groupBox")
 
         self.horizontal_Top = QtWidgets.QWidget(self.groupBox)
-        self.horizontal_Top.setGeometry(20, 20, 980,680)
+        self.horizontal_Top.setGeometry(20, 20, 560,500)
         self.horizontal_Top.setObjectName("horizontal_Top")
 
         self.verticalLayout = QtWidgets.QFormLayout(self.horizontal_Top)
@@ -138,21 +138,21 @@ class Ui():
         self.scrollTop.setWidget(self.groupBox)
 
         self.scrollBottom = QtWidgets.QScrollArea(self.chooseBottom)
-        self.scrollBottom.setGeometry(10,10,1215,785)
+        self.scrollBottom.setGeometry(10,10,694,577)
         self.scrollBottom.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.scrollBottom.setWidgetResizable(True)
         self.scrollBottom.setObjectName("scrollBottom")
 
         self.scrollBottomWidgetContents = QtWidgets.QWidget()
-        self.scrollBottomWidgetContents.setGeometry(0, 0, 188, 119)
+        self.scrollBottomWidgetContents.setGeometry(0, 0, 107, 87)
         self.scrollBottomWidgetContents.setObjectName("scrollBottomWidgetContents")
 
         self.groupBox = QtWidgets.QGroupBox(self.scrollBottomWidgetContents)
-        self.groupBox.setGeometry(0, 10, 181, 81)
+        self.groupBox.setGeometry(0, 10, 103, 59)
         self.groupBox.setObjectName("groupBox")
 
         self.horizontal_Top = QtWidgets.QWidget(self.groupBox)
-        self.horizontal_Top.setGeometry(20, 20, 980,680)
+        self.horizontal_Top.setGeometry(20, 20, 560,500)
         self.horizontal_Top.setObjectName("horizontal_Top")
 
         self.verticalLayout = QtWidgets.QFormLayout(self.horizontal_Top)
@@ -174,20 +174,20 @@ class Ui():
         self.PageSchedule.setObjectName("PageSchedule")
 
         scheduleBorder=QtWidgets.QLabel(self.PageSchedule)
-        scheduleBorder.setGeometry(20,10,1350,1270)
+        scheduleBorder.setGeometry(20,10,771,933)
         scheduleBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         schedulePic=QtWidgets.QLabel(self.PageSchedule)
-        schedulePic.setGeometry(540,30,320,320)
+        schedulePic.setGeometry(308,22,182,235)
         schedulePic.setStyleSheet("background-color:black")
         
         self.qPixmapVar = QPixmap()
         self.qPixmapVar.load("image/calander.png")
-        self.qPixmapVar=self.qPixmapVar.scaled(320,320)
+        self.qPixmapVar=self.qPixmapVar.scaled(182,235)
         schedulePic.setPixmap(self.qPixmapVar)
 
         self.scheduleBtn=QtWidgets.QToolButton(self.PageSchedule)
-        self.scheduleBtn.setGeometry(500,400,400,50)
+        self.scheduleBtn.setGeometry(285,284,228,36)
         self.scheduleBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#A0B4E6; border-width:3px; color: #3057B9;background-color: white")
         self.scheduleBtn.setFont(font)
         self.scheduleBtn.setText("확인")
@@ -196,7 +196,7 @@ class Ui():
 
 
         self.calander = QtWidgets.QCalendarWidget(self.PageSchedule)
-        self.calander.setGeometry(120, 500, 1150, 700)
+        self.calander.setGeometry(68, 367, 657, 514)
         self.calander.setStyleSheet("background-color :white;color :#808080;border-style:solid;border-color:#A0B4E6")
         self.calander.setSelectedDate(QtCore.QDate(2022, 5, 1))
         self.calander.setGridVisible(True)
@@ -211,15 +211,20 @@ class Ui():
         self.PageScheduleCheck.setObjectName("PageScheduleCheck")
 
         scheduleBorder=QtWidgets.QLabel(self.PageScheduleCheck)
-        scheduleBorder.setGeometry(20,10,1350,1270)
+        scheduleBorder.setGeometry(20,10,771,933)
         scheduleBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         schedulePic=QtWidgets.QLabel(self.PageScheduleCheck)
-        schedulePic.setGeometry(625,30,144,320)
+        schedulePic.setGeometry(320,45,182,235)
         schedulePic.setStyleSheet("background-color:black")
+        
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/calander.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(182,235)
+        schedulePic.setPixmap(self.qPixmapVar)
 
         self.scheduleCheckBtn=QtWidgets.QToolButton(self.PageScheduleCheck)
-        self.scheduleCheckBtn.setGeometry(250,1150,400,50)
+        self.scheduleCheckBtn.setGeometry(142,845,228,36)
         self.scheduleCheckBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#A0B4E6; border-width:3px; color: #3057B9;background-color: white")
         font.setPointSize(16)
         self.scheduleCheckBtn.setFont(font)
@@ -228,7 +233,7 @@ class Ui():
         QtCore.QMetaObject.connectSlotsByName(self.PageScheduleCheck)
 
         self.scheduleCheckBtn=QtWidgets.QToolButton(self.PageScheduleCheck)
-        self.scheduleCheckBtn.setGeometry(750,1150,400,50)
+        self.scheduleCheckBtn.setGeometry(428,845,228,36)
         self.scheduleCheckBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#A0B4E6; border-width:3px; color: #3057B9;background-color: white")
         self.scheduleCheckBtn.setFont(font)
         self.scheduleCheckBtn.setText("일정삭제")
@@ -236,7 +241,7 @@ class Ui():
         QtCore.QMetaObject.connectSlotsByName(self.PageScheduleCheck)
 
         scrollArea = QtWidgets.QScrollArea(self.PageScheduleCheck)
-        scrollArea.setGeometry(100,370,1200,750)
+        scrollArea.setGeometry(57,272,685,551)
         scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         scrollArea.setWidgetResizable(True)
         scrollArea.setObjectName("scrollArea3")
@@ -270,19 +275,19 @@ class Ui():
         self.PageOOTD.setObjectName("PageOOTD")
 
         scheduleBorder=QtWidgets.QLabel(self.PageOOTD)
-        scheduleBorder.setGeometry(20,10,1350,1270)
+        scheduleBorder.setGeometry(20,10,771,933)
         scheduleBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         OOTDPic=QtWidgets.QLabel(self.PageOOTD)
-        OOTDPic.setGeometry(450,30,240,320)
+        OOTDPic.setGeometry(270,30,137,235)
         OOTDPic.setStyleSheet("background-color:black")
 
         OOTDPic=QtWidgets.QLabel(self.PageOOTD)
-        OOTDPic.setGeometry(100,30,240,320)
+        OOTDPic.setGeometry(95,30,137,235)
         OOTDPic.setStyleSheet("background-color:black")
 
         self.scheduleBtn=QtWidgets.QToolButton(self.PageOOTD)
-        self.scheduleBtn.setGeometry(800,200,400,50)
+        self.scheduleBtn.setGeometry(457,147,228,36)
         self.scheduleBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#A0B4E6; border-width:3px; color: #3057B9;background-color: white")
         self.scheduleBtn.setFont(font)
         self.scheduleBtn.setText("OOTD 추가")
@@ -291,7 +296,7 @@ class Ui():
 
         
         self.scrollAreaOOTD = QtWidgets.QScrollArea(self.PageOOTD)
-        self.scrollAreaOOTD.setGeometry(100,400,1230,800)
+        self.scrollAreaOOTD.setGeometry(57,294,702,588)
         self.scrollAreaOOTD.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.scrollAreaOOTD.setWidgetResizable(True)
         self.scrollAreaOOTD.setObjectName("scrollAreaOOTD")
@@ -323,20 +328,20 @@ class Ui():
         self.PageplayList.setObjectName("PageplayList")
 
         playListBorder=QtWidgets.QLabel(self.PageplayList)
-        playListBorder.setGeometry(20,10,1350,1270)
+        playListBorder.setGeometry(20,10,771,933)
         playListBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         playListPic=QtWidgets.QLabel(self.PageplayList)
-        playListPic.setGeometry(400,100,640,400)
+        playListPic.setGeometry(228,73,365,294)
         playListPic.setStyleSheet("background-color:black")
         
         self.qPixmapVar = QPixmap()
         self.qPixmapVar.load("image/playList.png")
-        self.qPixmapVar=self.qPixmapVar.scaled(640,400)
+        self.qPixmapVar=self.qPixmapVar.scaled(365,294)
         playListPic.setPixmap(self.qPixmapVar)
 
         self.insertVideoBtn=QtWidgets.QToolButton(self.PageplayList)
-        self.insertVideoBtn.setGeometry(500,900,400,50)
+        self.insertVideoBtn.setGeometry(285,661,228,36)
         self.insertVideoBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#3057B9 ; border-width:3px; color: #3057B9 ;background-color: white")
         self.insertVideoBtn.setFont(font)
         self.insertVideoBtn.setText("음악추가")
@@ -345,27 +350,27 @@ class Ui():
         self.stackedWidget.addWidget(self.PageplayList)
 
         self.alertPlayBtn=QtWidgets.QToolButton(self.PageplayList)
-        self.alertPlayBtn.setGeometry(950,50,150,150)
+        self.alertPlayBtn.setGeometry(371,36,85,110)
         self.alertPlayBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#ffffff ; border-width:3px; color: #3057B9 ;background-color: white")
         self.alertPlayBtn.setIcon(QtGui.QIcon("image/say.png"))
-        self.alertPlayBtn.setIconSize(QtCore.QSize(150,150))
+        self.alertPlayBtn.setIconSize(QtCore.QSize(85,110))
         self.alertPlayBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         QtCore.QMetaObject.connectSlotsByName(self.PageplayList)
         self.stackedWidget.addWidget(self.PageplayList)
 
         self.musicName=QtWidgets.QLabel(self.PageplayList)
-        self.musicName.setGeometry(200,600,900,100)
+        self.musicName.setGeometry(114,441,550,73)
         self.musicName.setStyleSheet("background-color:black")
         self.qPixmapVar = QPixmap()
         self.qPixmapVar.load("image/playListBar.png")
-        self.qPixmapVar=self.qPixmapVar.scaled(946,100)
+        self.qPixmapVar=self.qPixmapVar.scaled(578,73)
         self.musicName.setPixmap(self.qPixmapVar)
 
         self.videoName=QtWidgets.QLabel(self.PageplayList)
-        self.videoName.setGeometry(450,600,1200,100)
+        self.videoName.setGeometry(257,441,700,73)
         font = QtGui.QFont()
         self.videoName.setStyleSheet("background-color:#00ffffff ; color:#000000;")
-        font.setPointSize(15)
+        font.setPointSize(10)
         self.videoName.setFont(font)
         self.videoName.setText("슈프림팀 – 그땐 그땐 그땐")
 
@@ -373,7 +378,7 @@ class Ui():
         self.playMusicBtns=[]
         for index in range(0,4):
             dummyplayBtn=QtWidgets.QToolButton(self.PageplayList)
-            dummyplayBtn.setGeometry(300+index*100,800,60,60)
+            dummyplayBtn.setGeometry(80+index*80,590,40,40)
             dummyplayBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#ffffff ; border-width:3px; color: #ffffff ;background-color: white")
             dummyplayBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
             QtCore.QMetaObject.connectSlotsByName(self.PageplayList)
@@ -394,15 +399,15 @@ class Ui():
 
         self.horizontalSlider = QtWidgets.QSlider(self.PageplayList)
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
-        self.horizontalSlider.setGeometry(900, 805, 200, 50)
+        self.horizontalSlider.setGeometry(514, 591, 114, 36)
         self.horizontalSlider.setStyleSheet("background-color:white")
         self.horizontalSlider.setObjectName("horizontalSlider")
 
         musicVolume=QtWidgets.QLabel(self.PageplayList)
-        musicVolume.setGeometry(800,800,60,60)
+        musicVolume.setGeometry(457,588,34,44)
         self.qPixmapVar = QPixmap()
         self.qPixmapVar.load("image/volume.png")
-        self.qPixmapVar=self.qPixmapVar.scaled(60,60)
+        self.qPixmapVar=self.qPixmapVar.scaled(34,44)
         musicVolume.setPixmap(self.qPixmapVar)
 
 
@@ -417,11 +422,11 @@ class Ui():
         self.PageGuide.setObjectName("PageGuide")
 
         playListBorder=QtWidgets.QLabel(self.PageGuide)
-        playListBorder.setGeometry(20,10,1350,1270)
+        playListBorder.setGeometry(20,10,771,933)
         playListBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         self.videoPlay=QtWidgets.QFrame(self.PageGuide)
-        self.videoPlay.setGeometry(200,180,1000,900)
+        self.videoPlay.setGeometry(114,132,571,661)
         self.videoPlay.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white;")
 
 
@@ -439,7 +444,6 @@ class Ui():
 
 
 ##########################################################################################
-        self.stackedWidget.setCurrentWidget(self.PageplayList)
 
         self.MainWindow.setCentralWidget(self.centralwidget)
 
@@ -750,7 +754,8 @@ class Ui():
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     Main=Ui()
-    
+    Main.stackedWidget.setCurrentWidget(Main.PageGuide)
+
     dialog=QtWidgets.QDialog()
     Main.dialogSmallMusic(dialog)
     dialog.show()
