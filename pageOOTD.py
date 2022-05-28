@@ -22,6 +22,8 @@ class PageOOTD:
         self.ui.dialogOOTDCheck(dialog)
         dialog.show()
         
+    def dialogOOTDCheck(self):
+        print()
 
 
     def backEvent(self):

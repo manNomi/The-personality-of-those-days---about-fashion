@@ -1044,7 +1044,6 @@ class Ui():
                 self.logoPics[1].setPixmap(qPixmapVar)
                 self.logoNames[1].setText("")
                 self.logoNames[1].setStyleSheet("background-color:#00ffffff")
-
         except:
             pass
 
