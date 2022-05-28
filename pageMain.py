@@ -14,8 +14,6 @@ class MainPage:
     def __init__(self):
         self.db=db.Database()
 
-
-
         app = QtWidgets.QApplication(sys.argv)
         self.ui=mainUi.Ui()
         self.closet=pageCloset.PageCloset(self.ui,self.db)
@@ -46,7 +44,7 @@ class MainPage:
             self.ui.mainBtns[index].clicked.connect(lambda event,value=index : self.moveEvent(value))
 
         self.ui.mainBackBtn.clicked.connect(lambda event,value=index : self.moveEvent(4))
-        
+
 
     def moveEvent(self,index):
         if index==0:

@@ -15,25 +15,25 @@ class Database:
         self.cursor2=None    
         self.connect2=sqlite3.connect("src\DataOfUser.db")
         self.column2=['sequance','id','top']
-        self.row2=['INTEGER PRIMARY KEY','TEXT','TEXT','TEXT','TEXT']
+        self.row2=['INTEGER PRIMARY KEY','TEXT','TEXT']
         self.cursor2=self.connect2.cursor()
         self.rows2=['id','top']
 
         self.connect3=None
         self.cursor3=None    
         self.connect3=sqlite3.connect("src\DataOfUser.db")
-        self.column3=['sequance','id','top']
-        self.row3=['INTEGER PRIMARY KEY','TEXT','TEXT','TEXT','TEXT']
+        self.column3=['sequance','id','bot']
+        self.row3=['INTEGER PRIMARY KEY','TEXT','TEXT']
         self.cursor3=self.connect3.cursor()
-        self.rows3=['id','top']
+        self.rows3=['id','bot']
 
         self.connect4=None
         self.cursor4=None    
         self.connect4=sqlite3.connect("src\DataOfUser.db")
-        self.column4=['sequance','id','bot']
+        self.column4=['sequance','id','playList']
         self.row4=['INTEGER PRIMARY KEY','TEXT','TEXT']
         self.cursor4=self.connect4.cursor()
-        self.rows4=['id','bot']
+        self.rows4=['id','playList']
 
         self.connect5=None
         self.cursor5=None    

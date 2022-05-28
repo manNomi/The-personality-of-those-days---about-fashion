@@ -12,7 +12,16 @@ class PageCloset:
         self.ui=ui
         self.db=db
         self.btnEvent()
+        self.closetSetting()
 
+
+    def closetSetting(self):
+        id="만욱"
+        dataTop=self.db.readData("top",["id"],[id],self.db.cursor2)
+        dataBot=self.db.readData("bot",["id"],[id],self.db.cursor3)
+
+        self.ui.setCloset(1,dataTop)
+        self.ui.setCloset(2,dataBot)
         
 
     def btnEvent(self):
@@ -25,6 +34,7 @@ class PageCloset:
         if value==0:
             # 상의추가
             self.insertTop()
+
         elif value==1:
             #하의추가
             self.insertBot()
@@ -32,14 +42,17 @@ class PageCloset:
         elif value==2:
             #선택
             pass
+            
 
         elif value==3:
             # 삭제
             pass
+            
 
         elif value==4:
             # 이동
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageMain)
+
             
 
     
@@ -64,9 +77,7 @@ class PageCloset:
             datas=[id,top]
             self.db.insertData("top",self.db.rows2,datas,self.db.cursor2,self.db.connect2)
             dialog.close()
-
-        print(top)
-        self.ui.insertCloset(1,"123",[1])
+        self.closetSetting()
         dialog.close()
 
 
@@ -80,5 +91,15 @@ class PageCloset:
     
     def checkBot(self,dialog):
         bot=self.ui.dialogClosetText.text()
-        print(bot)
+        id="만욱"
+        data=self.db.readData("bot",["id","bot"],[id,bot],self.db.cursor3)
+        if len(data)!=0:
+            dialogError=QtWidgets.QDialog()
+            self.ui.dialogError(dialogError,"증복된 입력입니다")
+            dialogError.exec()
+        else:
+            datas=[id,bot]
+            self.db.insertData("bot",self.db.rows3,datas,self.db.cursor3,self.db.connect3)
+            dialog.close()
+        self.closetSetting()
         dialog.close()

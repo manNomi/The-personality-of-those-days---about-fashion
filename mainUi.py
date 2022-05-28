@@ -193,17 +193,17 @@ class Ui():
         self.groupBoxBot.setGeometry(0, 10, 103, 59)
         self.groupBoxBot.setObjectName("groupBoxBot")
 
-        self.horizontal_Top = QtWidgets.QWidget(self.groupBoxBot)
-        self.horizontal_Top.setGeometry(20, 20, 560,500)
-        self.horizontal_Top.setObjectName("horizontal_Top")
+        self.horizontal_Bot = QtWidgets.QWidget(self.groupBoxBot)
+        self.horizontal_Bot.setGeometry(20, 20, 560,500)
+        self.horizontal_Bot.setObjectName("horizontal_Bot")
 
-        self.verticalLayout = QtWidgets.QFormLayout(self.horizontal_Top)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.verticalLayout.setSpacing(50)
-        self.verticalLayout.setVerticalSpacing(100)
+        self.verticalLayoutBot = QtWidgets.QFormLayout(self.horizontal_Bot)
+        self.verticalLayoutBot.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutBot.setObjectName("verticalLayoutBot")
+        self.verticalLayoutBot.setSpacing(50)
+        self.verticalLayoutBot.setVerticalSpacing(100)
 
-        self.groupBoxBot.setLayout(self.verticalLayout)
+        self.groupBoxBot.setLayout(self.verticalLayoutBot)
         self.scrollBottom.setWidget(self.groupBoxBot)
 
         self.closetBackBtn=QtWidgets.QPushButton(self.PageCloset)
@@ -837,60 +837,113 @@ class Ui():
         musicVolume.setPixmap(self.qPixmapVar)
 
 
-    def insertCloset(self,value,data,list):
+    def setCloset(self,value,list):
 
         if value==1:
             self.scrollTopCont = QtWidgets.QWidget()
             self.scrollTopCont.setGeometry(0, 0, 188, 119)
             self.scrollTopCont.setObjectName("scrollTop")
-
+            
             self.groupBoxTop = QtWidgets.QGroupBox(self.scrollTopCont)
             self.groupBoxTop.setGeometry(0, 10, 181, 81)
             self.groupBoxTop.setObjectName("groupBoxTop")
 
-            self.verticalLayoutVideoWidget2 = QtWidgets.QWidget(self.groupBoxTop)
-            self.verticalLayoutVideoWidget2.setGeometry(20, 20, 980,680)
-            self.verticalLayoutVideoWidget2.setObjectName("verticalLayoutVideoWidget2")
+            self.horizontal_Top = QtWidgets.QWidget(self.groupBoxTop)
+            self.horizontal_Top.setGeometry(20, 20, 980,680)
+            self.horizontal_Top.setObjectName("horizontal_Top")
 
-            self.verticalLayoutVideo2 = QtWidgets.QFormLayout(self.verticalLayoutVideoWidget2)
-            self.verticalLayoutVideo2.setContentsMargins(0, 0, 0, 0)
-            self.verticalLayoutVideo2.setObjectName("verticalLayoutVideo2")
-            self.verticalLayoutVideo2.setSpacing(10)
-            self.verticalLayoutVideo2.setVerticalSpacing(100)
+            self.verticalLayout = QtWidgets.QGridLayout(self.horizontal_Top)
+            self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+            self.verticalLayout.setObjectName("verticalLayout")
 
-            self.groupBoxTop.setLayout(self.verticalLayoutVideo2)
+            self.groupBoxTop.setLayout(self.verticalLayout)
             self.scrollTop.setWidget(self.groupBoxTop)
-
-            value=data
 
             self.closetImageBtn=[]
 
             self.closetImageBtn.clear()
-            print("값:"+str(data))
-            print(len(value))
+            print(len(list))
+            number=0
             for index in range(0,len(list)):
                 font = QtGui.QFont()
                 font.setFamily("Bebas Neue")
                 font.setPointSize(9)
-                closetImagesTop=QtWidgets.QToolButton(self.verticalLayoutVideoWidget2)
+                closetImagesTop=QtWidgets.QToolButton(self.horizontal_Top)
                 qPixmapVar = QPixmap()
-                image=str("closet_top/"+data+".PNG")
+                image="closet_top/"+str(list[index][2])+".PNG"
                 print(image)
-                self.qPixmapVar.load(image)
-                qPixmapVar=qPixmapVar.scaled(162, 90)
+                qPixmapVar.load(image)
+                qPixmapVar=qPixmapVar.scaled(150, 200)
                 icon = QIcon() # QIcon 생성
                 icon.addPixmap(qPixmapVar)
                 closetImagesTop.setIcon(icon)
-                closetImagesTop.setIconSize(QtCore.QSize(162, 90))
+                closetImagesTop.setIconSize(QtCore.QSize(150, 200))
                 closetImagesTop.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
                 closetImagesTop.setFont(font)
-                closetImagesTop.setText(value[index][0])
-                closetImagesTop.setFixedWidth(162)
-                closetImagesTop.setFixedHeight(90)
+                closetImagesTop.setText(list[index][2])
+                closetImagesTop.setFixedWidth(150)
+                closetImagesTop.setFixedHeight(200)
                 closetImagesTop.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-                self.verticalLayoutVideo2.addWidget(closetImagesTop)
+                if (index+2)%2==0:
+                    self.verticalLayout.addWidget(closetImagesTop,0,number)
+                else:
+                    self.verticalLayout.addWidget(closetImagesTop,1,number)
+                    number+=1
 
                 self.closetImageBtn.append(closetImagesTop)
+
+        else:
+            self.scrollBottomWidgetContents = QtWidgets.QWidget()
+            self.scrollBottomWidgetContents.setGeometry(0, 0, 188, 119)
+            self.scrollBottomWidgetContents.setObjectName("scrollBottomWidgetContents")
+            
+            self.groupBoxBot = QtWidgets.QGroupBox(self.scrollBottomWidgetContents)
+            self.groupBoxBot.setGeometry(0, 10, 181, 81)
+            self.groupBoxBot.setObjectName("groupBoxBot")
+
+            self.horizontal_Bot = QtWidgets.QWidget(self.groupBoxBot)
+            self.horizontal_Bot.setGeometry(20, 20, 980,680)
+            self.horizontal_Bot.setObjectName("horizontal_Bot")
+
+            self.verticalLayoutBot = QtWidgets.QGridLayout(self.horizontal_Bot)
+            self.verticalLayoutBot.setContentsMargins(0, 0, 0, 0)
+            self.verticalLayoutBot.setObjectName("verticalLayoutBot")
+
+            self.groupBoxBot.setLayout(self.verticalLayoutBot)
+            self.scrollBottom.setWidget(self.groupBoxBot)
+
+            self.closetImageBtnBot=[]
+
+            self.closetImageBtnBot.clear()
+            print(len(list))
+            number=0
+            for index in range(0,len(list)):
+                font = QtGui.QFont()
+                font.setFamily("Bebas Neue")
+                font.setPointSize(9)
+                closetImagesBot=QtWidgets.QToolButton(self.horizontal_Bot)
+                qPixmapVar = QPixmap()
+                image="closet_bot/"+str(list[index][2])+".PNG"
+                print(image)
+                qPixmapVar.load(image)
+                qPixmapVar=qPixmapVar.scaled(150, 200)
+                icon = QIcon() # QIcon 생성
+                icon.addPixmap(qPixmapVar)
+                closetImagesBot.setIcon(icon)
+                closetImagesBot.setIconSize(QtCore.QSize(150, 200))
+                closetImagesBot.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
+                closetImagesBot.setFont(font)
+                closetImagesBot.setText(list[index][2])
+                closetImagesBot.setFixedWidth(150)
+                closetImagesBot.setFixedHeight(200)
+                closetImagesBot.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                if (index+2)%2==0:
+                    self.verticalLayoutBot.addWidget(closetImagesBot,0,number)
+                else:
+                    self.verticalLayoutBot.addWidget(closetImagesBot,1,number)
+                    number+=1
+
+                self.closetImageBtnBot.append(closetImagesBot)
 
     
 
