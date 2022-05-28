@@ -336,7 +336,6 @@ class Ui():
 
         self.stackedWidget.addWidget(self.PageScheduleCheck)
 ##########################################################################################
-
         self.PageOOTD=QtWidgets.QWidget()
         self.PageOOTD.setObjectName("PageOOTD")
 
@@ -346,11 +345,21 @@ class Ui():
 
         OOTDPic=QtWidgets.QLabel(self.PageOOTD)
         OOTDPic.setGeometry(270,30,137,235)
-        OOTDPic.setStyleSheet("background-color:black")
+        OOTDPic.setStyleSheet("background-color:white")
 
-        OOTDPic=QtWidgets.QLabel(self.PageOOTD)
-        OOTDPic.setGeometry(95,30,137,235)
-        OOTDPic.setStyleSheet("background-color:black")
+        OOTDPic2=QtWidgets.QLabel(self.PageOOTD)
+        OOTDPic2.setGeometry(95,30,137,200)
+        OOTDPic2.setStyleSheet("background-color:white")
+
+
+        qPixmapVar = QPixmap()
+        qPixmapVar.load("image/OOTDrigth.png")
+        OOTDPic.setPixmap(qPixmapVar)
+        
+        qPixmapVar = QPixmap()
+        qPixmapVar.load("image/OOTDleft.png")
+        OOTDPic2.setPixmap(qPixmapVar)
+      
 
         self.scheduleBtn=QtWidgets.QToolButton(self.PageOOTD)
         self.scheduleBtn.setGeometry(457,147,228,36)
@@ -391,7 +400,6 @@ class Ui():
         self.ootdBackBtn.setIconSize(QtCore.QSize(40,40))
         self.ootdBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
         self.ootdBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-
 
 
 ###############################################################################################################
@@ -1052,7 +1060,7 @@ if __name__=="__main__":
     Main.stackedWidget.setCurrentWidget(Main.PageMain)
 
     dialog=QtWidgets.QDialog()
-    Main.dialogClosetDelete(dialog)
+    Main.dialogOOTDCheck(dialog)
     dialog.show()
 
     Main.MainWindow.show()

@@ -15,7 +15,6 @@ class PageCloset:
         self.btnEvent()
         self.closetSetting()
         self.closetBtnEvent()
-    
 
 
     def closetSetting(self):
@@ -41,10 +40,8 @@ class PageCloset:
         elif value==1:
             #하의추가
             self.insertBot()
-
         elif value==2:
             #선택
-
             dialog=QtWidgets.QDialog()
             self.ui.dialogCloset(dialog)
             dialog.show()
@@ -53,18 +50,15 @@ class PageCloset:
         elif value==3:
             # 삭제
             self.deleteThing()
-            
 
         elif value==4:
             # 이동
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageMain)
 
-            
     def chooseEvent(self):
         dialog=QtWidgets.QDialog()
         self.ui.dialogClosetCheck(dialog,"상의")
         dialog.show()
-
 
     def closetBtnEvent(self):
         for index in range(0,len(self.ui.closetImageBtn)):
@@ -84,10 +78,6 @@ class PageCloset:
                 image="closet_bot/"+str(imageNum[2])+".png"
                 self.ui.closetDialogSet(2,image)
                 
-
-
-
-
     
     def insertTop(self):
         dialog=QtWidgets.QDialog()
