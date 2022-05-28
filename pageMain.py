@@ -28,15 +28,8 @@ class MainPage:
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.PageMain)
         self.ui.MainWindow.show()
-
-
         self.btnEvent()
-
-
         sys.exit(app.exec_())
-
-
-
 
     
     def btnEvent(self):

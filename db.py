@@ -83,12 +83,12 @@ class Database:
         cursor.execute(sql)
         connect.commit()
 #----------------------------------------------------------------------------------------#
-    def deleteData(self,table,sequance): 
+    def deleteData(self,table,sequance,cursor,connect): 
         sql="DELETE FROM "
         sql+=table+" WHERE "+sequance[0]+"="+str(sequance[1])+";"
         print(sql)
-        self.cursor.execute(sql)
-        self.connect.commit()
+        cursor.execute(sql)
+        connect.commit()
 #----------------------------------------------------------------------------------------#
     def updateData(self,table,pw,sequance):
         value=pw

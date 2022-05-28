@@ -556,17 +556,16 @@ class Ui():
         closetBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
         closetDigXY=[[150,80,500,430],[150,505,500,430]]
-        logoPics=[]
+        self.logoPics=[]
         for index in range(0,2):
             closetDig=QtWidgets.QLabel(Dialog)
             closetDig.setGeometry(closetDigXY[index][0],closetDigXY[index][1],closetDigXY[index][2],closetDigXY[index][3])
             closetDig.setStyleSheet("border-style: solid ; border-color:#808080; border-width:3px")
-            logoPics.append(closetDig)
+            self.logoPics.append(closetDig)
 
         closetNameXY=[[320,250,150,40],[320,700,150,40]]
         closetText=['상의 사진','하의 사진']
-        
-        logoNames=[]
+        self.logoNames=[]
         for index in range(0,2):
             closetName=QtWidgets.QLabel(Dialog)
             closetName.setText(closetText[index])
@@ -575,7 +574,7 @@ class Ui():
             closetName.setAlignment(Qt.AlignCenter)
             closetName.setGeometry(closetNameXY[index][0],closetNameXY[index][1],closetNameXY[index][2],closetNameXY[index][3])
             closetName.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#A0B4E6; border-width:3px; color : #3057B9;")
-            logoNames.append(closetName)
+            self.logoNames.append(closetName)
 
     #  dialogClosetBtn 버튼  dialogClosetText - edit
     def dialogClosetCheck(self,Dialog,type):
@@ -754,7 +753,7 @@ class Ui():
         dialogBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
         Dialog.setStyleSheet("background-color : white;")
         self.dialogLabel = QtWidgets.QLabel(Dialog)
-        self.dialogLabel.setGeometry(340, 180, 200, 300)
+        self.dialogLabel.setGeometry(200, 180, 400, 300)
         font = QtGui.QFont()
         font.setFamily("함초롬돋움")
         font.setPointSize(18)
@@ -945,6 +944,103 @@ class Ui():
 
                 self.closetImageBtnBot.append(closetImagesBot)
 
+        
+    def dialogClosetDelete(self,Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(800,700)
+        Dialog.setStyleSheet("background-color : white;")
+        self.dialogLabel = QtWidgets.QLabel(Dialog)
+        self.dialogLabel.setGeometry(0, 0, 600, 300)
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(18)
+        self.dialogLabel.setFont(font)
+        self.dialogLabel.setStyleSheet("color : red;")
+        self.dialogLabel.setObjectName("label")
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        closetBorder=QtWidgets.QLabel(Dialog)
+        closetBorder.setGeometry(20,10,760,680)
+        closetBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
+
+
+        self.dialogClosetText = QtWidgets.QLineEdit(Dialog)
+        self.dialogClosetText.setGeometry(100 ,400, 600, 100)
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(12)
+        self.dialogClosetText.setFont(font)
+        self.dialogClosetText.setStyleSheet("background-color:white ; border-style: solid; border-color : #a0b4e6; border-width: 2px;color:#a0b4e6")
+        self.dialogClosetText.setObjectName("label")
+
+
+        
+        labelName = QtWidgets.QLabel(Dialog)
+        labelName.setGeometry(200,170, 500, 100)
+        font = QtGui.QFont()
+        
+        labelName.setFont(font)
+        labelName.setStyleSheet("background-color:white;color:#3057B9")
+        labelName.setObjectName("label")
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(20)
+        font.setWeight(75)
+        labelName.setFont(font)
+        labelName.setText("삭제하실 상의(하의)\n이름을 입력해주세요")
+
+        self.checkBoxTop=QtWidgets.QCheckBox(Dialog)
+        self.checkBoxTop.setText("상의")
+        self.checkBoxTop.setGeometry(200,300,80,50)
+        self.checkBoxTop.setStyleSheet("background-color:white;color:#3057B9")
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(13)
+        font.setWeight(75)
+        self.checkBoxTop.setFont(font)
+
+
+        self.checkBoxBot=QtWidgets.QCheckBox(Dialog)
+        self.checkBoxBot.setText("하의")
+        self.checkBoxBot.setGeometry(300,300,80,50)
+        self.checkBoxBot.setStyleSheet("background-color:white;color:#3057B9")
+        self.checkBoxBot.setFont(font)
+
+
+
+        self.dialogClosetDeleteBtn=QtWidgets.QToolButton(Dialog)
+        self.dialogClosetDeleteBtn.setGeometry(200,550,400,50)
+        self.dialogClosetDeleteBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#A0B4E6; border-width:3px; color: #3057B9;background-color: white")
+
+        self.dialogClosetDeleteBtn.setFont(font)
+        self.dialogClosetDeleteBtn.setText("확인")
+        self.dialogClosetDeleteBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+
+    def closetDialogSet(self,type,value):
+        try:
+            if type==1:
+                qPixmapVar = QPixmap()
+                qPixmapVar.load(value)
+                qPixmapVar=qPixmapVar.scaled(500,430)
+                print(value)
+                self.logoPics[0].setPixmap(qPixmapVar)
+                self.logoNames[0].setText("")
+                self.logoNames[0].setStyleSheet("background-color:#00ffffff")
+
+            else:
+                qPixmapVar = QPixmap()
+                qPixmapVar.load(value)
+                qPixmapVar=qPixmapVar.scaled(500,430)
+                self.logoPics[1].setPixmap(qPixmapVar)
+                self.logoNames[1].setText("")
+                self.logoNames[1].setStyleSheet("background-color:#00ffffff")
+
+        except:
+            pass
+
+
     
 
 
@@ -956,7 +1052,7 @@ if __name__=="__main__":
     Main.stackedWidget.setCurrentWidget(Main.PageMain)
 
     dialog=QtWidgets.QDialog()
-    Main.dialogError(dialog,"error")
+    Main.dialogClosetDelete(dialog)
     dialog.show()
 
     Main.MainWindow.show()
