@@ -50,7 +50,7 @@ class Ui():
         
         
         mainBtnXY=[[310,530,170,50],[310,590,170,50],[310,650,170,50],[310,710,170,50]]
-        mainBtnText=['나만의 closet','ootd 기록','playlist','가이드 영상']
+        mainBtnText=['나만의 closet','OOTD 기록','playlist','가이드 영상']
         self.mainBtns=[]
         for index in range(0,4):
             mainBtn=QtWidgets.QToolButton(self.PageMain)
@@ -370,36 +370,160 @@ class Ui():
         QtCore.QMetaObject.connectSlotsByName(self.PageOOTD)
 
         
-        self.scrollAreaOOTD = QtWidgets.QScrollArea(self.PageOOTD)
-        self.scrollAreaOOTD.setGeometry(57,294,702,588)
-        self.scrollAreaOOTD.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
-        self.scrollAreaOOTD.setWidgetResizable(True)
-        self.scrollAreaOOTD.setObjectName("scrollAreaOOTD")
+        self.chooseOOTD = QtWidgets.QTabWidget(self.PageOOTD)
+        self.chooseOOTD.setGeometry(40,279, 714, 625)
+        font = QtGui.QFont()
+        font.setFamily('함초롬돋움')
+        font.setPointSize(16)
+        font.setWeight(75)
 
-        self.scrollAreaOOTDWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaOOTDWidgetContents.setGeometry(0, 0, 188, 119)
-        self.scrollAreaOOTDWidgetContents.setObjectName("scrollAreaOOTDWidgetContents")
+        self.chooseOOTD.setFont(font)
+        self.chooseOOTD.setObjectName("chooseOOTD")
 
-        self.groupBoxOOTD = QtWidgets.QGroupBox(self.scrollAreaOOTDWidgetContents)
-        self.groupBoxOOTD.setGeometry(0, 10, 181, 81)
-        self.groupBoxOOTD.setObjectName("groupBoxOOTD")
+        self.spring = QtWidgets.QWidget()
+        self.spring.setObjectName("spring")
 
-        self.verticalLayoutWidgetOOTD = QtWidgets.QWidget(self.groupBoxOOTD)
-        self.verticalLayoutWidgetOOTD.setGeometry(20, 20, 980,680)
-        self.verticalLayoutWidgetOOTD.setObjectName("verticalLayoutWidgetOOTD")
+        self.summer = QtWidgets.QWidget()
+        self.summer.setObjectName("summer")
 
-        self.verticalLayoutOOTD = QtWidgets.QFormLayout(self.verticalLayoutWidgetOOTD)
-        self.verticalLayoutOOTD.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayoutOOTD.setObjectName("verticalLayoutOOTD")
-        self.verticalLayoutOOTD.setSpacing(50)
-        self.verticalLayoutOOTD.setVerticalSpacing(100)
+        self.autumn = QtWidgets.QWidget()
+        self.autumn.setObjectName("autumn")
 
-        self.ootdBackBtn=QtWidgets.QPushButton(self.PageOOTD)
-        self.ootdBackBtn.setGeometry(40,40,40,40)
-        self.ootdBackBtn.setIcon(QtGui.QIcon("image/back.png"))
-        self.ootdBackBtn.setIconSize(QtCore.QSize(40,40))
-        self.ootdBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
-        self.ootdBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.winter = QtWidgets.QWidget()
+        self.winter.setObjectName("winter")
+
+
+        self.chooseOOTD.addTab(self.spring, "")
+        self.chooseOOTD.addTab(self.summer, "")
+        self.chooseOOTD.addTab(self.autumn, "")
+        self.chooseOOTD.addTab(self.winter, "")
+
+
+
+        self.chooseOOTD.setTabText(self.chooseOOTD.indexOf(self.spring),"봄")
+        self.chooseOOTD.setTabText(self.chooseOOTD.indexOf(self.summer),"여름")
+        self.chooseOOTD.setTabText(self.chooseOOTD.indexOf(self.autumn),"가을")
+        self.chooseOOTD.setTabText(self.chooseOOTD.indexOf(self.winter),"겨울")
+
+
+        self.chooseOOTD.setStyleSheet("QTabWidget::pane{border-style: solid; border-width: 3px;border-color:#808080}\nQTabBar::tab{ border-style: solid; border-width: 3px;border-color:#808080;color:#808080}")
+
+        self.scrollSpring = QtWidgets.QScrollArea(self.chooseOOTD)
+        self.scrollSpring.setGeometry(10,10,694,577)
+        self.scrollSpring.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+        self.scrollSpring.setWidgetResizable(True)
+        self.scrollSpring.setObjectName("scrollSpring")
+
+        self.scrollSpringCont = QtWidgets.QWidget()
+        self.scrollSpringCont.setGeometry(0, 0, 107, 87)
+        self.scrollSpringCont.setObjectName("scrollSpringCont")
+
+        self.groupBoxSpring = QtWidgets.QGroupBox(self.scrollSpringCont)
+        self.groupBoxSpring.setGeometry(0, 10, 103, 59)
+        self.groupBoxSpring.setObjectName("groupBoxSpring")
+
+        self.horizontal_Spring = QtWidgets.QWidget(self.groupBoxSpring)
+        self.horizontal_Spring.setGeometry(20, 20, 560,500)
+        self.horizontal_Spring.setObjectName("horizontal_Spring")
+
+        self.verticalLayoutSpring = QtWidgets.QFormLayout(self.horizontal_Spring)
+        self.verticalLayoutSpring.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutSpring.setObjectName("verticalLayout")
+        self.verticalLayoutSpring.setSpacing(50)
+        self.verticalLayoutSpring.setVerticalSpacing(100)
+
+        self.groupBoxSpring.setLayout(self.verticalLayoutSpring)
+        self.scrollSpring.setWidget(self.groupBoxSpring)
+
+
+
+        self.scrollSummer = QtWidgets.QScrollArea(self.chooseOOTD)
+        self.scrollSummer.setGeometry(10,10,694,577)
+        self.scrollSummer.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+        self.scrollSummer.setWidgetResizable(True)
+        self.scrollSummer.setObjectName("scrollSummer")
+
+        self.scrollSummerCont = QtWidgets.QWidget()
+        self.scrollSummerCont.setGeometry(0, 0, 107, 87)
+        self.scrollSummerCont.setObjectName("scrollSummerCont")
+
+        self.groupBoxSummer = QtWidgets.QGroupBox(self.scrollSummerCont)
+        self.groupBoxSummer.setGeometry(0, 10, 103, 59)
+        self.groupBoxSummer.setObjectName("groupBoxSummer")
+
+        self.horizontal_Summer = QtWidgets.QWidget(self.groupBoxSummer)
+        self.horizontal_Summer.setGeometry(20, 20, 560,500)
+        self.horizontal_Summer.setObjectName("horizontal_Summer")
+
+        self.verticalLayoutSummer = QtWidgets.QFormLayout(self.horizontal_Summer)
+        self.verticalLayoutSummer.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutSummer.setObjectName("verticalLayout")
+        self.verticalLayoutSummer.setSpacing(50)
+        self.verticalLayoutSummer.setVerticalSpacing(100)
+
+        self.groupBoxSummer.setLayout(self.verticalLayoutSummer)
+        self.scrollSummer.setWidget(self.groupBoxSummer)
+
+        self.scrollAutumn = QtWidgets.QScrollArea(self.chooseOOTD)
+        self.scrollAutumn.setGeometry(10,10,694,577)
+        self.scrollAutumn.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+        self.scrollAutumn.setWidgetResizable(True)
+        self.scrollAutumn.setObjectName("scrollAutumn")
+
+        self.scrollAutumnCont = QtWidgets.QWidget()
+        self.scrollAutumnCont.setGeometry(0, 0, 107, 87)
+        self.scrollAutumnCont.setObjectName("scrollAutumnCont")
+
+        self.groupBoxAutumn = QtWidgets.QGroupBox(self.scrollAutumnCont)
+        self.groupBoxAutumn.setGeometry(0, 10, 103, 59)
+        self.groupBoxAutumn.setObjectName("groupBoxAutumn")
+
+        self.horizontal_Autumn = QtWidgets.QWidget(self.groupBoxAutumn)
+        self.horizontal_Autumn.setGeometry(20, 20, 560,500)
+        self.horizontal_Autumn.setObjectName("horizontal_Autumn")
+
+        self.verticalLayoutAutumn = QtWidgets.QFormLayout(self.horizontal_Autumn)
+        self.verticalLayoutAutumn.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutAutumn.setObjectName("verticalLayout")
+        self.verticalLayoutAutumn.setSpacing(50)
+        self.verticalLayoutAutumn.setVerticalSpacing(100)
+
+        self.groupBoxAutumn.setLayout(self.verticalLayoutAutumn)
+        self.scrollAutumn.setWidget(self.groupBoxAutumn)
+
+        self.scrollWinter = QtWidgets.QScrollArea(self.chooseOOTD)
+        self.scrollWinter.setGeometry(10,10,694,577)
+        self.scrollWinter.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+        self.scrollWinter.setWidgetResizable(True)
+        self.scrollWinter.setObjectName("scrollWinter")
+
+        self.scrollWinterCont = QtWidgets.QWidget()
+        self.scrollWinterCont.setGeometry(0, 0, 107, 87)
+        self.scrollWinterCont.setObjectName("scrollWinterCont")
+
+        self.groupBoxWinter = QtWidgets.QGroupBox(self.scrollWinterCont)
+        self.groupBoxWinter.setGeometry(0, 10, 103, 59)
+        self.groupBoxWinter.setObjectName("groupBoxWinter")
+
+        self.horizontal_Winter = QtWidgets.QWidget(self.groupBoxWinter)
+        self.horizontal_Winter.setGeometry(20, 20, 560,500)
+        self.horizontal_Winter.setObjectName("horizontal_Winter")
+
+        self.verticalLayoutWinter = QtWidgets.QFormLayout(self.horizontal_Winter)
+        self.verticalLayoutWinter.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutWinter.setObjectName("verticalLayout")
+        self.verticalLayoutWinter.setSpacing(50)
+        self.verticalLayoutWinter.setVerticalSpacing(100)
+
+        self.groupBoxWinter.setLayout(self.verticalLayoutWinter)
+        self.scrollWinter.setWidget(self.groupBoxWinter)
+
+        self.OOTDBackBtn=QtWidgets.QPushButton(self.PageOOTD)
+        self.OOTDBackBtn.setGeometry(40,40,40,40)
+        self.OOTDBackBtn.setIcon(QtGui.QIcon("image/back.png"))
+        self.OOTDBackBtn.setIconSize(QtCore.QSize(40,40))
+        self.OOTDBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
+        self.OOTDBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
 
 ###############################################################################################################
@@ -534,8 +658,6 @@ class Ui():
 
 
 
-        self.groupBoxOOTD.setLayout(self.verticalLayoutOOTD)
-        self.scrollAreaOOTD.setWidget(self.groupBoxOOTD)
         self.stackedWidget.addWidget(self.PageOOTD)
 
 
@@ -1056,7 +1178,7 @@ class Ui():
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     Main=Ui()
-    Main.stackedWidget.setCurrentWidget(Main.PageMain)
+    Main.stackedWidget.setCurrentWidget(Main.PageOOTD)
 
     dialog=QtWidgets.QDialog()
     Main.dialogOOTDCheck(dialog)

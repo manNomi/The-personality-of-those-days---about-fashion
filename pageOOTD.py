@@ -10,6 +10,7 @@ class PageOOTD:
     def __init__(self,ui,db):
         self.ui=ui
         self.db=db
+        self.name="만욱"
         self.btnEvent()
 
     
@@ -20,10 +21,23 @@ class PageOOTD:
     def btnOOTD(self):
         dialog=QtWidgets.QDialog()
         self.ui.dialogOOTDCheck(dialog)
+        self.ui.dialogOOTDEditBtn.clicked.connect(lambda event:self.dialogOOTDEvent(dialog))
         dialog.show()
         
-    def dialogOOTDCheck(self):
-        print()
+    def dialogOOTDEvent(self,dialog):
+        input=self.ui.dialogOOTDEdit.text()
+        data=self.db.readData("OOTD",["id","OOTD"],[self.name,input],self.db.cursor5)
+        if len(data)!=0:
+            dialogError=QtWidgets.QDialog()
+            self.ui.dialogError(dialogError,"증복된 사진입니다")
+        else:
+            datas=[self.name,input]
+            self.db.insertData("OOTD",self.db.rows5,datas,self.db.cursor5,self.db.connect5)
+            dialog.close()
+
+    def OOTDSet(self):
+        pass
+
 
 
     def backEvent(self):

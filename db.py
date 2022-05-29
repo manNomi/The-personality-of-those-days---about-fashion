@@ -48,8 +48,8 @@ class Database:
         self.create("user",self.column1,self.row1, self.cursor1)
         self.create("top",self.column2,self.row2, self.cursor2)
         self.create("bot",self.column3,self.row3, self.cursor3)
-        self.create("OOTD",self.column3,self.row3, self.cursor4)
-        self.create("playList",self.column3,self.row3, self.cursor5)
+        self.create("OOTD",self.column5,self.row5, self.cursor5)
+        self.create("playList",self.column4,self.row4, self.cursor4)
 
 #----------------------------------------------------------------------------------------#
     def create(self,user,column,row,cursor):
