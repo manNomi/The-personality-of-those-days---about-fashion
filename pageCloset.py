@@ -1,4 +1,3 @@
-import mainUi
 from PyQt5 import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -6,6 +5,11 @@ from PyQt5.QtWidgets import*
 from PyQt5 import uic
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+import threadChange
+
+from PyQt5 import *
+
+
 
 class PageCloset:
     def __init__(self,ui,db):
@@ -15,13 +19,25 @@ class PageCloset:
         self.btnEvent()
         self.closetSetting()
         self.closetBtnEvent()
+        self.threadPic=threadChange.Main_pic()
+        self.closetAdFirst()
+        
 
+
+
+    def closetAdFirst(self):
+        qPixmapVar = QPixmap()
+        qPixmapVar.load("ad/1.PNG")
+        qPixmapVar=qPixmapVar.scaled(462,117)
+        self.ui.closetAd.setPixmap(qPixmapVar)
+
+
+
+        self.ui.closetAd.setText('1'+"/6")
 
     def closetSetting(self):
-        
         dataTop=self.db.readData("top",["id"],[self.name],self.db.cursor2)
         dataBot=self.db.readData("bot",["id"],[self.name],self.db.cursor3)
-
         self.ui.setCloset(1,dataTop)
         self.ui.setCloset(2,dataBot)
         
@@ -54,6 +70,7 @@ class PageCloset:
         elif value==4:
             # 이동
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageMain)
+            self.thread_pic(False)
 
     def chooseEvent(self):
         dialog=QtWidgets.QDialog()
@@ -173,5 +190,20 @@ class PageCloset:
                     dialogError=QtWidgets.QDialog()
                     self.ui.dialogError(dialogError,"존재하지 않는 옷입니다")
                     dialogError.exec()
-                    
-                
+        
+    def mainPictureChange(self,num):
+        ADImage=["ad/1.png",'ad/2.png','ad/3.png','ad/4.png','ad/5.png','ad/6.png']
+        qPixmapVar=QPixmap()
+        qPixmapVar.load(ADImage[num])
+        qPixmapVar=qPixmapVar.scaled(462,117)
+        self.ui.closetAd.setPixmap(qPixmapVar)
+        self.ui.closetAd.setText(str(num+1)+"/6")
+            
+    
+    def thread_pic(self,bool):
+        if bool==True:
+            self.threadPic.start()
+            self.threadPic.time.connect(self.mainPictureChange)
+            self.threadPlay=True
+        else:
+            self.threadPlay=False

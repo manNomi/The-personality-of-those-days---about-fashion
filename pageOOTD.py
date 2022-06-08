@@ -16,7 +16,7 @@ class PageOOTD:
     
     def btnEvent(self):
         self.ui.scheduleBtn.clicked.connect(lambda event:self.btnOOTD())
-        self.ui.ootdBackBtn.clicked.connect(lambda event:self.backEvent())
+        self.ui.OOTDBackBtn.clicked.connect(lambda event:self.backEvent())
 
     def btnOOTD(self):
         dialog=QtWidgets.QDialog()

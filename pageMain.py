@@ -27,13 +27,11 @@ class MainPage:
 
         closetGif.start()
 
-
         self.ui.stackedWidget.setCurrentWidget(self.ui.PageMain)
         self.ui.MainWindow.show()
         self.btnEvent()
         sys.exit(app.exec_())
 
-    
     def btnEvent(self):
         for index in range(0,len(self.ui.mainBtns)):
             self.ui.mainBtns[index].clicked.connect(lambda event,value=index : self.moveEvent(value))
@@ -44,20 +42,18 @@ class MainPage:
     def moveEvent(self,index):
         if index==0:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageCloset)
+            self.closet.thread_pic(True)
         elif index==1:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageOOTD)
         elif index==2:
-            self.ui.stackedWidget.setCurrentWidget(self.ui.PagePlayList)
+            self.ui.stackedWidget.setCurrentWidget(self.ui.PageplayList)
         elif index==3:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageGuide)
         elif index==3:
             # self.ui.stackedWidget.setCurrentWidget(self.ui.PageLogin)   - pageLogin 
             pass
-        
-            
 
-
-
+    
 
 if __name__=="__main__":
     main=MainPage()

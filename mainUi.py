@@ -15,6 +15,7 @@ class Ui():
         self.MainWindow.setMinimumSize(800,950)
         self.MainWindow.setMaximumSize(800,950)
         self.MainWindow.setStyleSheet("background-color : white;")
+        
 
         self.centralwidget = QtWidgets.QWidget(self.MainWindow)
 
@@ -104,9 +105,9 @@ class Ui():
             
 
 
-        closetAd=QtWidgets.QLabel(self.PageCloset)
-        closetAd.setGeometry(165,161,462,117)
-        closetAd.setStyleSheet("background-color:black")
+        self.closetAd=QtWidgets.QLabel(self.PageCloset)
+        self.closetAd.setGeometry(165,161,462,117)
+        self.closetAd.setStyleSheet("background-color:black")
 
         font = QtGui.QFont()
         font.setFamily('함초롬돋움')
