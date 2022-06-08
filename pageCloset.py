@@ -190,7 +190,6 @@ class PageCloset:
         
     def mainPictureChange(self,num):
         ADImage=["image_ad/ad1.png",'image_ad/ad2.png','image_ad/ad3.png','image_ad/ad4.png','image_ad/ad5.png','image_ad/ad6.png']
-        trash=['image/back.png','image/stop.png','image/back.png','image/stop.png','image/back.png','image/stop.png']
         qPixmapVar=QPixmap()
         qPixmapVar.load(ADImage[num])
         qPixmapVar=qPixmapVar.scaled(462,117)
