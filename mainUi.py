@@ -686,7 +686,7 @@ class Ui():
         closetBorder.setGeometry(20,10,780,1020)
         closetBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
-        closetDigXY=[[150,80,500,430],[150,505,500,430]]
+        closetDigXY=[[150,80,500,400],[150,475,500,490]]
         self.logoPics=[]
         for index in range(0,2):
             closetDig=QtWidgets.QLabel(Dialog)
@@ -1154,16 +1154,19 @@ class Ui():
             if type==1:
                 qPixmapVar = QPixmap()
                 qPixmapVar.load(value)
-                qPixmapVar=qPixmapVar.scaled(500,430)
+                qPixmapVar=qPixmapVar.scaledToHeight(400)
                 print(value)
                 self.logoPics[0].setPixmap(qPixmapVar)
+                self.logoPics[0].setAlignment(Qt.AlignCenter)
                 self.logoNames[0].setText("")
                 self.logoNames[0].setStyleSheet("background-color:#00ffffff")
+
 
             else:
                 qPixmapVar = QPixmap()
                 qPixmapVar.load(value)
-                qPixmapVar=qPixmapVar.scaled(500,430)
+                qPixmapVar=qPixmapVar.scaledToHeight(490)
+                self.logoPics[1].setAlignment(Qt.AlignCenter)
                 self.logoPics[1].setPixmap(qPixmapVar)
                 self.logoNames[1].setText("")
                 self.logoNames[1].setStyleSheet("background-color:#00ffffff")

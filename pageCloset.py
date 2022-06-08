@@ -27,12 +27,9 @@ class PageCloset:
 
     def closetAdFirst(self):
         qPixmapVar = QPixmap()
-        qPixmapVar.load("ad/1.PNG")
+        qPixmapVar.load("image_ad/ad1.png")
         qPixmapVar=qPixmapVar.scaled(462,117)
         self.ui.closetAd.setPixmap(qPixmapVar)
-
-
-
         self.ui.closetAd.setText('1'+"/6")
 
     def closetSetting(self):
@@ -192,12 +189,14 @@ class PageCloset:
                     dialogError.exec()
         
     def mainPictureChange(self,num):
-        ADImage=["ad/1.png",'ad/2.png','ad/3.png','ad/4.png','ad/5.png','ad/6.png']
+        ADImage=["image_ad/ad1.png",'image_ad/ad2.png','image_ad/ad3.png','image_ad/ad4.png','image_ad/ad5.png','image_ad/ad6.png']
+        trash=['image/back.png','image/stop.png','image/back.png','image/stop.png','image/back.png','image/stop.png']
         qPixmapVar=QPixmap()
         qPixmapVar.load(ADImage[num])
         qPixmapVar=qPixmapVar.scaled(462,117)
         self.ui.closetAd.setPixmap(qPixmapVar)
         self.ui.closetAd.setText(str(num+1)+"/6")
+        print(num)
             
     
     def thread_pic(self,bool):
