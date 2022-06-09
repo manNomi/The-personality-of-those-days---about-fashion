@@ -6,6 +6,8 @@ from PyQt5 import uic
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
+from attr import dataclass
+
 
 class Ui():
     
@@ -360,7 +362,7 @@ class Ui():
         qPixmapVar = QPixmap()
         qPixmapVar.load("image/OOTDleft.png")
         OOTDPic2.setPixmap(qPixmapVar)
-      
+
 
         self.scheduleBtn=QtWidgets.QToolButton(self.PageOOTD)
         self.scheduleBtn.setGeometry(457,147,228,36)
@@ -409,7 +411,7 @@ class Ui():
 
         self.chooseOOTD.setStyleSheet("QTabWidget::pane{border-style: solid; border-width: 3px;border-color:#808080}\nQTabBar::tab{ border-style: solid; border-width: 3px;border-color:#808080;color:#808080}")
 
-        self.scrollSpring = QtWidgets.QScrollArea(self.chooseOOTD)
+        self.scrollSpring = QtWidgets.QScrollArea(self.spring)
         self.scrollSpring.setGeometry(10,10,694,577)
         self.scrollSpring.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.scrollSpring.setWidgetResizable(True)
@@ -438,7 +440,7 @@ class Ui():
 
 
 
-        self.scrollSummer = QtWidgets.QScrollArea(self.chooseOOTD)
+        self.scrollSummer = QtWidgets.QScrollArea(self.summer)
         self.scrollSummer.setGeometry(10,10,694,577)
         self.scrollSummer.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.scrollSummer.setWidgetResizable(True)
@@ -465,7 +467,7 @@ class Ui():
         self.groupBoxSummer.setLayout(self.verticalLayoutSummer)
         self.scrollSummer.setWidget(self.groupBoxSummer)
 
-        self.scrollAutumn = QtWidgets.QScrollArea(self.chooseOOTD)
+        self.scrollAutumn = QtWidgets.QScrollArea(self.autumn)
         self.scrollAutumn.setGeometry(10,10,694,577)
         self.scrollAutumn.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.scrollAutumn.setWidgetResizable(True)
@@ -492,7 +494,7 @@ class Ui():
         self.groupBoxAutumn.setLayout(self.verticalLayoutAutumn)
         self.scrollAutumn.setWidget(self.groupBoxAutumn)
 
-        self.scrollWinter = QtWidgets.QScrollArea(self.chooseOOTD)
+        self.scrollWinter = QtWidgets.QScrollArea(self.winter)
         self.scrollWinter.setGeometry(10,10,694,577)
         self.scrollWinter.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.scrollWinter.setWidgetResizable(True)
@@ -822,6 +824,7 @@ class Ui():
         self.dialogCheckEditBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+        
 
 
 # dialogOOTDEditBtn 버튼  dialogOOTDEdit  text 에딧
@@ -853,7 +856,7 @@ class Ui():
         self.dialogOOTDEdit.setObjectName("label")
         
         labelName = QtWidgets.QLabel(Dialog)
-        labelName.setGeometry(185,170, 450, 100)
+        labelName.setGeometry(185,120, 450, 100)
         font = QtGui.QFont()
         font.setFamily("함초롬돋움")
         font.setPointSize(12)
@@ -874,6 +877,33 @@ class Ui():
         self.dialogOOTDEditBtn.setText("확인")
         self.dialogOOTDEditBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+        
+        font.setPointSize(10)
+
+        self.springBtn=QtWidgets.QCheckBox(Dialog)
+        self.springBtn.setGeometry(150,230,100,50)
+        self.springBtn.setText("봄")
+        self.springBtn.setFont(font)
+
+
+        self.summerBtn=QtWidgets.QCheckBox(Dialog)
+        self.summerBtn.setGeometry(270,230,100,50)
+        self.summerBtn.setText("여름")
+        self.summerBtn.setFont(font)
+
+
+        self.autumBtn=QtWidgets.QCheckBox(Dialog)
+        self.autumBtn.setGeometry(390,230,100,50)
+        self.autumBtn.setText("가을")
+        self.autumBtn.setFont(font)
+
+
+        self.winterBtn=QtWidgets.QCheckBox(Dialog)
+        self.winterBtn.setGeometry(510,230,100,50)
+
+        self.winterBtn.setText("겨울")
+        self.winterBtn.setFont(font)
+
 
 
     def dialogError(self,Dialog,text):
@@ -892,7 +922,6 @@ class Ui():
         self.dialogLabel.setText(text)
         self.dialogLabel.setStyleSheet("color : red;")
         self.dialogLabel.setObjectName("label")
-       
 
     
     def dialogSmallMusic(self,Dialog):
@@ -1173,8 +1202,234 @@ class Ui():
         except:
             pass
 
-
     
+    def OOTDset(self,data,seasonCheck):
+        if seasonCheck=='Spring':
+            season=1
+        elif seasonCheck=='Summer':
+            season=2
+
+        elif seasonCheck=='Autum':
+            season=3
+        
+        elif seasonCheck=='Winter':
+            season=4
+
+        if season==1:
+            self.scrollSpringCont = QtWidgets.QWidget()
+            self.scrollSpringCont.setGeometry(0, 0, 188, 119)
+            self.scrollSpringCont.setObjectName("scrollTop")
+            
+            self.groupBoxSpring = QtWidgets.QGroupBox(self.scrollSpringCont)
+            self.groupBoxSpring.setGeometry(0, 10, 181, 81)
+            self.groupBoxSpring.setObjectName("groupBoxSpring")
+
+            self.horizontal_Spring = QtWidgets.QWidget(self.groupBoxSpring)
+            self.horizontal_Spring.setGeometry(20, 20, 980,680)
+            self.horizontal_Spring.setObjectName("horizontal_Spring")
+
+            self.verticalLayoutSpring = QtWidgets.QGridLayout(self.horizontal_Spring)
+            self.verticalLayoutSpring.setContentsMargins(0, 0, 0, 0)
+            self.verticalLayoutSpring.setObjectName("verticalLayoutSpring")
+
+            self.groupBoxSpring.setLayout(self.verticalLayoutSpring)
+            self.scrollSpring.setWidget(self.groupBoxSpring)
+
+            self.springImageBtn=[]
+
+            self.springImageBtn.clear()
+            print(len(data))
+            number=0
+            for index in range(0,len(data)):
+                font = QtGui.QFont()
+                font.setFamily("Bebas Neue")
+                font.setPointSize(9)
+                springImages=QtWidgets.QToolButton(self.horizontal_Top)
+                qPixmapVar = QPixmap()
+                image="OOTD/Spring/"+str(data[index][2])+".PNG"
+                print(image)
+                qPixmapVar.load(image)
+                qPixmapVar=qPixmapVar.scaled(150, 200)
+                icon = QIcon() # QIcon 생성
+                icon.addPixmap(qPixmapVar)
+                springImages.setIcon(icon)
+                springImages.setIconSize(QtCore.QSize(150, 200))
+                springImages.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
+                springImages.setFont(font)
+                springImages.setText(data[index][3])
+                springImages.setFixedWidth(150)
+                springImages.setFixedHeight(200)
+                springImages.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                if (index+2)%2==0:
+                    self.verticalLayoutSpring.addWidget(springImages,0,number)
+                else:
+                    self.verticalLayoutSpring.addWidget(springImages,1,number)
+                    number+=1
+
+                self.springImageBtn.append(springImages)
+        elif season==2:
+            self.scrollSummerCont = QtWidgets.QWidget()
+            self.scrollSummerCont.setGeometry(0, 0, 188, 119)
+            self.scrollSummerCont.setObjectName("scrollTop")
+            
+            self.groupBoxSummer = QtWidgets.QGroupBox(self.scrollSummerCont)
+            self.groupBoxSummer.setGeometry(0, 10, 181, 81)
+            self.groupBoxSummer.setObjectName("groupBoxSummer")
+
+            self.horizontal_Summer = QtWidgets.QWidget(self.groupBoxSummer)
+            self.horizontal_Summer.setGeometry(20, 20, 980,680)
+            self.horizontal_Summer.setObjectName("horizontal_Summer")
+
+            self.verticalLayoutSummer = QtWidgets.QGridLayout(self.horizontal_Summer)
+            self.verticalLayoutSummer.setContentsMargins(0, 0, 0, 0)
+            self.verticalLayoutSummer.setObjectName("verticalLayoutSummer")
+
+            self.groupBoxSummer.setLayout(self.verticalLayoutSummer)
+            self.scrollSummer.setWidget(self.groupBoxSummer)
+
+            self.SummerImageBtn=[]
+
+            self.SummerImageBtn.clear()
+            print(len(data))
+            number=0
+            for index in range(0,len(data)):
+                font = QtGui.QFont()
+                font.setFamily("Bebas Neue")
+                font.setPointSize(9)
+                SummerImages=QtWidgets.QToolButton(self.horizontal_Top)
+                qPixmapVar = QPixmap()
+                image="OOTD/Summer/"+str(data[index][2])+".PNG"
+                print(image)
+                qPixmapVar.load(image)
+                qPixmapVar=qPixmapVar.scaled(150, 200)
+                icon = QIcon() # QIcon 생성
+                icon.addPixmap(qPixmapVar)
+                SummerImages.setIcon(icon)
+                SummerImages.setIconSize(QtCore.QSize(150, 200))
+                SummerImages.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
+                SummerImages.setFont(font)
+                SummerImages.setText(data[index][3])
+                SummerImages.setFixedWidth(150)
+                SummerImages.setFixedHeight(200)
+                SummerImages.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                if (index+2)%2==0:
+                    self.verticalLayoutSummer.addWidget(SummerImages,0,number)
+                else:
+                    self.verticalLayoutSummer.addWidget(SummerImages,1,number)
+                    number+=1
+
+                self.SummerImageBtn.append(SummerImages)
+
+        elif season==3:
+            self.scrollAutumnCont = QtWidgets.QWidget()
+            self.scrollAutumnCont.setGeometry(0, 0, 188, 119)
+            self.scrollAutumnCont.setObjectName("scrollTop")
+            
+            self.groupBoxAutumn = QtWidgets.QGroupBox(self.scrollAutumnCont)
+            self.groupBoxAutumn.setGeometry(0, 10, 181, 81)
+            self.groupBoxAutumn.setObjectName("groupBoxAutumn")
+
+            self.horizontal_Autumn = QtWidgets.QWidget(self.groupBoxAutumn)
+            self.horizontal_Autumn.setGeometry(20, 20, 980,680)
+            self.horizontal_Autumn.setObjectName("horizontal_Autumn")
+
+            self.verticalLayoutAutumn = QtWidgets.QGridLayout(self.horizontal_Autumn)
+            self.verticalLayoutAutumn.setContentsMargins(0, 0, 0, 0)
+            self.verticalLayoutAutumn.setObjectName("verticalLayoutAutumn")
+
+            self.groupBoxAutumn.setLayout(self.verticalLayoutAutumn)
+            self.scrollAutumn.setWidget(self.groupBoxAutumn)
+
+            self.AutumnImageBtn=[]
+
+            self.AutumnImageBtn.clear()
+            print(len(data))
+            number=0
+            for index in range(0,len(data)):
+                font = QtGui.QFont()
+                font.setFamily("Bebas Neue")
+                font.setPointSize(9)
+                AutumnImages=QtWidgets.QToolButton(self.horizontal_Top)
+                qPixmapVar = QPixmap()
+                image="OOTD/Autumn/"+str(data[index][2])+".PNG"
+                print(image)
+                qPixmapVar.load(image)
+                qPixmapVar=qPixmapVar.scaled(150, 200)
+                icon = QIcon() # QIcon 생성
+                icon.addPixmap(qPixmapVar)
+                AutumnImages.setIcon(icon)
+                AutumnImages.setIconSize(QtCore.QSize(150, 200))
+                AutumnImages.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
+                AutumnImages.setFont(font)
+                AutumnImages.setText(data[index][3])
+                AutumnImages.setFixedWidth(150)
+                AutumnImages.setFixedHeight(200)
+                AutumnImages.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                if (index+2)%2==0:
+                    self.verticalLayoutAutumn.addWidget(AutumnImages,0,number)
+                else:
+                    self.verticalLayoutAutumn.addWidget(AutumnImages,1,number)
+                    number+=1
+
+                self.AutumnImageBtn.append(AutumnImages)
+
+        elif season==4:
+            self.scrollWinterCont = QtWidgets.QWidget()
+            self.scrollWinterCont.setGeometry(0, 0, 188, 119)
+            self.scrollWinterCont.setObjectName("scrollTop")
+            
+            self.groupBoxWinter = QtWidgets.QGroupBox(self.scrollWinterCont)
+            self.groupBoxWinter.setGeometry(0, 10, 181, 81)
+            self.groupBoxWinter.setObjectName("groupBoxWinter")
+
+            self.horizontal_Winter = QtWidgets.QWidget(self.groupBoxWinter)
+            self.horizontal_Winter.setGeometry(20, 20, 980,680)
+            self.horizontal_Winter.setObjectName("horizontal_Winter")
+
+            self.verticalLayoutWinter = QtWidgets.QGridLayout(self.horizontal_Winter)
+            self.verticalLayoutWinter.setContentsMargins(0, 0, 0, 0)
+            self.verticalLayoutWinter.setObjectName("verticalLayoutWinter")
+
+            self.groupBoxWinter.setLayout(self.verticalLayoutWinter)
+            self.scrollWinter.setWidget(self.groupBoxWinter)
+
+            self.WinterImageBtn=[]
+
+            self.WinterImageBtn.clear()
+            print(len(data))
+            number=0
+            number2=0
+            for index in range(0,len(data)):
+                font = QtGui.QFont()
+                font.setFamily("Bebas Neue")
+                font.setPointSize(9)
+                WinterImages=QtWidgets.QToolButton(self.horizontal_Top)
+                qPixmapVar = QPixmap()
+                image="OOTD/Winter/"+str(data[index][3])+".PNG"
+                print(image)
+                qPixmapVar.load(image)
+                qPixmapVar=qPixmapVar.scaled(150, 200)
+                icon = QIcon() # QIcon 생성
+                icon.addPixmap(qPixmapVar)
+                WinterImages.setIcon(icon)
+                WinterImages.setIconSize(QtCore.QSize(150, 200))
+                WinterImages.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
+                WinterImages.setFont(font)
+                WinterImages.setText(data[index][3])
+                WinterImages.setFixedWidth(150)
+                WinterImages.setFixedHeight(200)
+                WinterImages.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                if (index+1)%5==0:
+                    number2=0
+                    self.verticalLayoutWinter.addWidget(WinterImages,number,number2)
+                    number+=1
+                else:
+                    self.verticalLayoutWinter.addWidget(WinterImages,number,number2)
+                    number2+=1
+
+
+                self.WinterImageBtn.append(WinterImages)
+
 
 
 

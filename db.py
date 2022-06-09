@@ -38,10 +38,10 @@ class Database:
         self.connect5=None
         self.cursor5=None    
         self.connect5=sqlite3.connect("src\DataOfUser.db")
-        self.column5=['sequance','id','OOTD']
-        self.row5=['INTEGER PRIMARY KEY','TEXT','TEXT']
+        self.column5=['sequance','id','season','OOTD']
+        self.row5=['INTEGER PRIMARY KEY','TEXT','TEXT','TEXT']
         self.cursor5=self.connect5.cursor()
-        self.rows5=['id','OOTD']
+        self.rows5=['id','season','OOTD']
 
 
 

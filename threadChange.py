@@ -9,11 +9,12 @@ class Main_pic(QThread):
         super().__init__()
         self.num = 0           # 초깃값 설정
         self.num2=0
+        self.startAd=True
     def run(self):
-        while True:
+        while self.startAd==True:
             self.time.emit(self.num)     # 방출
             self.num += 1
-            time.sleep(1)
+            time.sleep(1.5)
             if self.num>=6:
                 self.num=0
 

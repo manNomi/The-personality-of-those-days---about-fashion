@@ -16,6 +16,8 @@ class PageCloset:
         self.ui=ui
         self.db=db
         self.name="만욱"
+        self.qPixmapVar = QPixmap()
+
         self.btnEvent()
         self.closetSetting()
         self.closetBtnEvent()
@@ -26,11 +28,10 @@ class PageCloset:
 
 
     def closetAdFirst(self):
-        qPixmapVar = QPixmap()
-        qPixmapVar.load("image_ad/ad1.png")
-        qPixmapVar=qPixmapVar.scaled(462,117)
-        self.ui.closetAd.setPixmap(qPixmapVar)
+        self.qPixmapVar.load("image_ad/ad1.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(462,117)
         self.ui.closetAd.setText('1'+"/6")
+        self.ui.closetAd.setPixmap(self.qPixmapVar)
 
     def closetSetting(self):
         dataTop=self.db.readData("top",["id"],[self.name],self.db.cursor2)
@@ -81,16 +82,16 @@ class PageCloset:
             self.ui.closetImageBtnBot[index].clicked.connect(lambda event , value=index : self.closetDialog(2,value))
 
     def closetDialog(self,type,value):
-            if type==1:
-                dataTop=self.db.readData("top",["id"],[self.name],self.db.cursor3)
-                imageNum=dataTop[value]
-                image="closet_top/"+str(imageNum[2])+".png"
-                self.ui.closetDialogSet(1,image)
-            else:
-                dataBot=self.db.readData("bot",["id"],[self.name],self.db.cursor3)
-                imageNum=dataBot[value]
-                image="closet_bot/"+str(imageNum[2])+".png"
-                self.ui.closetDialogSet(2,image)
+        if type==1:
+            dataTop=self.db.readData("top",["id"],[self.name],self.db.cursor3)
+            imageNum=dataTop[value]
+            image="closet_top/"+str(imageNum[2])+".png"
+            self.ui.closetDialogSet(1,image)
+        else:
+            dataBot=self.db.readData("bot",["id"],[self.name],self.db.cursor3)
+            imageNum=dataBot[value]
+            image="closet_bot/"+str(imageNum[2])+".png"
+            self.ui.closetDialogSet(2,image)
                 
     
     def insertTop(self):
@@ -190,11 +191,17 @@ class PageCloset:
         
     def mainPictureChange(self,num):
         ADImage=["image_ad/ad1.png",'image_ad/ad2.png','image_ad/ad3.png','image_ad/ad4.png','image_ad/ad5.png','image_ad/ad6.png']
-        qPixmapVar=QPixmap()
-        qPixmapVar.load(ADImage[num])
-        qPixmapVar=qPixmapVar.scaled(462,117)
-        self.ui.closetAd.setPixmap(qPixmapVar)
+
+
+        self.qPixmapVar.load(ADImage[num])
+
+        self.qPixmapVar=self.qPixmapVar.scaled(462,117)
+
+
         self.ui.closetAd.setText(str(num+1)+"/6")
+        self.ui.closetAd.setPixmap(self.qPixmapVar)
+
+
         print(num)
             
     
@@ -202,6 +209,6 @@ class PageCloset:
         if bool==True:
             self.threadPic.start()
             self.threadPic.time.connect(self.mainPictureChange)
-            self.threadPlay=True
+            self.threadPic.startAd=True
         else:
-            self.threadPlay=False
+            self.threadPic.startAd=False
