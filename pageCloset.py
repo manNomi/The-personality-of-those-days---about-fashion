@@ -23,7 +23,7 @@ class PageCloset:
         self.closetBtnEvent()
         self.threadPic=threadChange.Main_pic()
         self.closetAdFirst()
-        
+
 
 
 

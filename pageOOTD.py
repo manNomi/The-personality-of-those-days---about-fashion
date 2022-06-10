@@ -48,8 +48,6 @@ class PageOOTD:
             if btns[index]==True:
                 btn.append(index)
 
-        
-
         if len(btn)!=1:
             dialogError=QtWidgets.QDialog()
             self.ui.dialogError(dialogError,"체크박스를 확인하세요")

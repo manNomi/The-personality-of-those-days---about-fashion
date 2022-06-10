@@ -6,9 +6,6 @@ from PyQt5 import uic
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
-from attr import dataclass
-
-
 class Ui():
     
     def __init__(self):
@@ -52,10 +49,10 @@ class Ui():
         self.mainPic.setStyleSheet("background-color:white")
         
         
-        mainBtnXY=[[310,530,170,50],[310,590,170,50],[310,650,170,50],[310,710,170,50]]
-        mainBtnText=['나만의 closet','OOTD 기록','playlist','가이드 영상']
+        mainBtnXY=[[310,530,170,50],[310,590,170,50],[310,650,170,50],[310,710,170,50],[310,770,170,50]]
+        mainBtnText=['나만의 closet','OOTD 기록','일정등록','playlist','가이드 영상']
         self.mainBtns=[]
-        for index in range(0,4):
+        for index in range(0,5):
             mainBtn=QtWidgets.QToolButton(self.PageMain)
             mainBtn.setGeometry(mainBtnXY[index][0],mainBtnXY[index][1],mainBtnXY[index][2],mainBtnXY[index][3])
             mainBtn.setStyleSheet("background-color:white;border-style: solid;border-color: #A0B4E6;border-width: 3px;color:#3057B9;border-radius: 10px")
@@ -1431,7 +1428,57 @@ class Ui():
                 self.WinterImageBtn.append(WinterImages)
 
 
+    def dialogPlayList(self,Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(800,700)
+        Dialog.setStyleSheet("background-color : white;")
+        self.dialogLabel = QtWidgets.QLabel(Dialog)
+        self.dialogLabel.setGeometry(0, 0, 600, 300)
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(18)
+        self.dialogLabel.setFont(font)
+        self.dialogLabel.setStyleSheet("color : red;")
+        self.dialogLabel.setObjectName("label")
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+        closetBorder=QtWidgets.QLabel(Dialog)
+        closetBorder.setGeometry(20,10,760,680)
+        closetBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
+
+        self.dialogPlayListEdit = QtWidgets.QLineEdit(Dialog)
+        self.dialogPlayListEdit.setGeometry(100 ,300, 600, 150)
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(12)
+        self.dialogPlayListEdit.setFont(font)
+        self.dialogPlayListEdit.setStyleSheet("background-color:white ; border-style: solid; border-color : #a0b4e6; border-width: 2px;color:#a0b4e6")
+        self.dialogPlayListEdit.setObjectName("label")
+        
+        labelName = QtWidgets.QLabel(Dialog)
+        labelName.setGeometry(185,120, 450, 100)
+        font = QtGui.QFont()
+        font.setFamily("함초롬돋움")
+        font.setPointSize(12)
+        labelName.setFont(font)
+        labelName.setStyleSheet("background-color:white;color:#3057B9")
+        labelName.setObjectName("label")
+        font = QtGui.QFont()
+        font.setFamily('함초롬돋움')
+        font.setPointSize(16)
+        font.setWeight(75)
+        labelName.setFont(font)
+        labelName.setText("사진의 이름을 입력하세요")
+
+        self.dialogPlayListBtn=QtWidgets.QToolButton(Dialog)
+        self.dialogPlayListBtn.setGeometry(200,500,400,50)
+        self.dialogPlayListBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#A0B4E6; border-width:3px; color: #3057B9;background-color: white")
+        self.dialogPlayListBtn.setFont(font)
+        self.dialogPlayListBtn.setText("확인")
+        self.dialogPlayListBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        
+        font.setPointSize(10)
 
 
 if __name__=="__main__":

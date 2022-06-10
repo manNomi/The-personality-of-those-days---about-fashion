@@ -1,6 +1,7 @@
 import mainUi
 import pageCloset
 import pageOOTD
+import pagePlaylist
 from PyQt5 import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -19,6 +20,8 @@ class MainPage:
         self.ui=mainUi.Ui()
         self.closet=pageCloset.PageCloset(self.ui,self.db)
         self.ootd=pageOOTD.PageOOTD(self.ui,self.db)
+
+        self.playList=pagePlaylist.pagePlayList(self.ui,self.db)
 
         closetGif = QMovie("image/pageMainImage.gif", QByteArray())
         closetGif.setCacheMode(QMovie.CacheAll)
@@ -46,10 +49,12 @@ class MainPage:
         elif index==1:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageOOTD)
         elif index==2:
+            self.ui.stackedWidget.setCurrentWidget(self.ui.PageSchedule)
+        elif index==3:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageplayList)
-        elif index==3:
+        elif index==4:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageGuide)
-        elif index==3:
+        elif index==5:
             # self.ui.stackedWidget.setCurrentWidget(self.ui.PageLogin)   - pageLogin 
             pass
 
