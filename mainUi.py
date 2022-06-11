@@ -44,7 +44,7 @@ class Ui():
         mainBorder.setGeometry(20,10,771,933)
         mainBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
-        self.mainPic=QtWidgets.QLabel(self.PageMain)
+        self.mainPic=QtWidgets.QLabel(self                                                                                                                      .PageMain)
         self.mainPic.setGeometry(230,40,330,335)
         self.mainPic.setStyleSheet("background-color:white")
         
@@ -1484,7 +1484,7 @@ class Ui():
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     Main=Ui()
-    Main.stackedWidget.setCurrentWidget(Main.PageOOTD)
+    Main.stackedWidget.setCurrentWidget(Main.PageplayList)
 
     dialog=QtWidgets.QDialog()
     Main.dialogOOTDCheck(dialog)

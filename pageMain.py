@@ -17,12 +17,14 @@ class MainPage:
         self.db=db.Database()
 
         app = QtWidgets.QApplication(sys.argv)
+
         self.ui=mainUi.Ui()
+
         self.closet=pageCloset.PageCloset(self.ui,self.db)
         self.ootd=pageOOTD.PageOOTD(self.ui,self.db)
 
         self.playList=pagePlaylist.pagePlayList(self.ui,self.db)
-
+        
         closetGif = QMovie("image/pageMainImage.gif", QByteArray())
         closetGif.setCacheMode(QMovie.CacheAll)
         closetGif.setScaledSize(QSize(330,335))
