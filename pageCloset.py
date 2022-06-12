@@ -24,6 +24,9 @@ class PageCloset:
         self.threadPic=threadChange.Main_pic()
         self.closetAdFirst()
 
+    def getName(self,name):
+        self.name=name
+        self.closetSetting()
 
 
 
@@ -38,6 +41,7 @@ class PageCloset:
         dataBot=self.db.readData("bot",["id"],[self.name],self.db.cursor3)
         self.ui.setCloset(1,dataTop)
         self.ui.setCloset(2,dataBot)
+        self.closetBtnEvent()
         
 
     def btnEvent(self):

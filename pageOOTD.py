@@ -17,9 +17,10 @@ class PageOOTD:
         self.OOTDSet("Autum")
         self.OOTDSet("Winter")
 
+    def getName(self,name):
+        self.name=name
 
 
-    
     def btnEvent(self):
         self.ui.scheduleBtn.clicked.connect(lambda event:self.btnOOTD())
         self.ui.OOTDBackBtn.clicked.connect(lambda event:self.backEvent())

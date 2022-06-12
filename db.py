@@ -6,10 +6,10 @@ class Database:
         self.connect1=None
         self.cursor1=None    
         self.connect1=sqlite3.connect("src\DataOfUser.db")
-        self.column1=['sequance','id','pw','name','birth']
+        self.column1=['sequance','name','id','pw','birth']
         self.row1=['INTEGER PRIMARY KEY','TEXT','TEXT','TEXT','TEXT']
         self.cursor1=self.connect1.cursor()
-        self.rows1=['id','pw','name','birth']
+        self.rows1=['name','id','pw','birth']
 
         self.connect2=None
         self.cursor2=None    

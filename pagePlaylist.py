@@ -26,6 +26,9 @@ class pagePlayList:
         self.playVideo=PlayVideo(self.ui)
         self.initBtnEvnet()
 
+    def getName(self,name):
+        self.name=name
+
     def initBtnEvnet(self):
         self.ui.playBackBtn.clicked.connect(lambda event : self.moveEvent())
         self.ui.insertVideoBtn.clicked.connect(lambda event : self.insertMusic())

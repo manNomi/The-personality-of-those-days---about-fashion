@@ -2,6 +2,7 @@ import mainUi
 import pageCloset
 import pageOOTD
 import pagePlaylist
+import pageGuide
 from PyQt5 import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -13,17 +14,16 @@ import db
 
 class MainPage:
 
-    def __init__(self):
-        self.db=db.Database()
-
-        app = QtWidgets.QApplication(sys.argv)
-
-        self.ui=mainUi.Ui()
+    def __init__(self,ui,db):
+        self.db=db
+        self.ui=ui
 
         self.closet=pageCloset.PageCloset(self.ui,self.db)
         self.ootd=pageOOTD.PageOOTD(self.ui,self.db)
 
         self.playList=pagePlaylist.pagePlayList(self.ui,self.db)
+        
+        self.pageGuide=pageGuide.PageGuide(self.ui,self.db)
         
         closetGif = QMovie("image/pageMainImage.gif", QByteArray())
         closetGif.setCacheMode(QMovie.CacheAll)
@@ -35,7 +35,12 @@ class MainPage:
         self.ui.stackedWidget.setCurrentWidget(self.ui.PageMain)
         self.ui.MainWindow.show()
         self.btnEvent()
-        sys.exit(app.exec_())
+        self.name=""
+
+
+    def rename(self,id):
+        self.name=id
+
 
     def btnEvent(self):
         for index in range(0,len(self.ui.mainBtns)):
@@ -43,22 +48,30 @@ class MainPage:
 
         self.ui.mainBackBtn.clicked.connect(lambda event,value=index : self.moveEvent(4))
 
+        self.ui.scheduleBackBtn.clicked.connect(lambda event,value=index : self.moveEvent(6))
 
     def moveEvent(self,index):
         if index==0:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageCloset)
             self.closet.thread_pic(True)
+            self.closet.getName(self.name)
+
         elif index==1:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageOOTD)
+            self.ootd.getName(self.name)
         elif index==2:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageSchedule)
         elif index==3:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageplayList)
+            self.playList.getName(self.name)
         elif index==4:
             self.ui.stackedWidget.setCurrentWidget(self.ui.PageGuide)
         elif index==5:
             # self.ui.stackedWidget.setCurrentWidget(self.ui.PageLogin)   - pageLogin 
             pass
+        elif index==6:
+            self.ui.stackedWidget.setCurrentWidget(self.ui.PageMain)
+            
 
 if __name__=="__main__":
     main=MainPage()
