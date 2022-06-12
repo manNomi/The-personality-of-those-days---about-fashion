@@ -60,9 +60,5 @@ class MainPage:
             # self.ui.stackedWidget.setCurrentWidget(self.ui.PageLogin)   - pageLogin 
             pass
 
-    
-
 if __name__=="__main__":
     main=MainPage()
-    
-    

@@ -535,8 +535,6 @@ class Ui():
         playListBorder.setGeometry(20,10,771,933)
         playListBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
-        
-
         self.insertVideoBtn=QtWidgets.QToolButton(self.PageplayList)
         self.insertVideoBtn.setGeometry(285,661,228,36)
         self.insertVideoBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#3057B9 ; border-width:3px; color: #3057B9 ;background-color: white")
@@ -571,7 +569,6 @@ class Ui():
         self.videoName.setFont(font)
         self.videoName.setText("가수 – 곡")
 
-
         self.playMusicBtns=[]
         for index in range(0,4):
             dummyplayBtn=QtWidgets.QToolButton(self.PageplayList)
@@ -580,7 +577,6 @@ class Ui():
             dummyplayBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
             QtCore.QMetaObject.connectSlotsByName(self.PageplayList)
             self.playMusicBtns.append(dummyplayBtn)
-
 
         self.playMusicBtns[0].setIcon(QtGui.QIcon("image/play.png"))
         self.playMusicBtns[0].setIconSize(QtCore.QSize(60,60))
@@ -614,11 +610,6 @@ class Ui():
         self.playBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
         self.playBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
-
-        self.videoPlay=QtWidgets.QFrame(self.PageplayList)
-        self.videoPlay.setGeometry(75,25,680,420)
-        self.videoPlay.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white;")
-
         self.playListPic=QtWidgets.QLabel(self.PageplayList)
         self.playListPic.setGeometry(228,73,365,294)
         self.playListPic.setStyleSheet("background-color:black")
@@ -627,10 +618,10 @@ class Ui():
         self.qPixmapVar.load("image/playList.png")
         self.qPixmapVar=self.qPixmapVar.scaled(365,294)
         self.playListPic.setPixmap(self.qPixmapVar)
-        
 
-
-
+        self.videoPlay=QtWidgets.QFrame(self.PageplayList)
+        self.videoPlay.setGeometry(75,25,680,420)
+        self.videoPlay.setStyleSheet("background-color:#00ffffff ; border-style: solid; border-color : white; border-width: 1px;color:white;")
         
         self.stackedWidget.addWidget(self.PageplayList)
 
@@ -646,9 +637,9 @@ class Ui():
         playListBorder.setGeometry(20,10,771,933)
         playListBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
-        self.videoPlay=QtWidgets.QFrame(self.PageGuide)
-        self.videoPlay.setGeometry(114,132,571,661)
-        self.videoPlay.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white;")
+        self.guidePlay=QtWidgets.QFrame(self.PageGuide)
+        self.guidePlay.setGeometry(114,132,571,661)
+        self.guidePlay.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white;")
 
         self.guideBackBtn=QtWidgets.QPushButton(self.PageGuide)
         self.guideBackBtn.setGeometry(40,40,40,40)
