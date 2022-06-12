@@ -535,14 +535,7 @@ class Ui():
         playListBorder.setGeometry(20,10,771,933)
         playListBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
 
-        playListPic=QtWidgets.QLabel(self.PageplayList)
-        playListPic.setGeometry(228,73,365,294)
-        playListPic.setStyleSheet("background-color:black")
         
-        self.qPixmapVar = QPixmap()
-        self.qPixmapVar.load("image/playList.png")
-        self.qPixmapVar=self.qPixmapVar.scaled(365,294)
-        playListPic.setPixmap(self.qPixmapVar)
 
         self.insertVideoBtn=QtWidgets.QToolButton(self.PageplayList)
         self.insertVideoBtn.setGeometry(285,661,228,36)
@@ -554,7 +547,7 @@ class Ui():
         self.stackedWidget.addWidget(self.PageplayList)
 
         self.alertPlayBtn=QtWidgets.QToolButton(self.PageplayList)
-        self.alertPlayBtn.setGeometry(371,36,85,110)
+        self.alertPlayBtn.setGeometry(600,36,85,110)
         self.alertPlayBtn.setStyleSheet("border-style: solid ; border-radius: 10px; border-color:#ffffff ; border-width:3px; color: #3057B9 ;background-color: white")
         self.alertPlayBtn.setIcon(QtGui.QIcon("image/say.png"))
         self.alertPlayBtn.setIconSize(QtCore.QSize(85,110))
@@ -621,6 +614,19 @@ class Ui():
         self.playBackBtn.setStyleSheet(" border-style: solid; border-color : white; border-width: 0px;color:white;")
         self.playBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
+
+        self.playListPic=QtWidgets.QLabel(self.PageplayList)
+        self.playListPic.setGeometry(228,73,365,294)
+        self.playListPic.setStyleSheet("background-color:black")
+        
+        self.qPixmapVar = QPixmap()
+        self.qPixmapVar.load("image/playList.png")
+        self.qPixmapVar=self.qPixmapVar.scaled(365,294)
+        self.playListPic.setPixmap(self.qPixmapVar)
+        
+        self.videoPlay=QtWidgets.QFrame(self.PageplayList)
+        self.videoPlay.setGeometry(228,73,365,294)
+        self.videoPlay.setStyleSheet("background-color:#00ffffff ; border-style: solid; border-color : white; border-width: 1px;color:white;")
 
         self.stackedWidget.addWidget(self.PageplayList)
 
@@ -1424,9 +1430,7 @@ class Ui():
                     self.verticalLayoutWinter.addWidget(WinterImages,number,number2)
                     number2+=1
 
-
                 self.WinterImageBtn.append(WinterImages)
-
 
     def dialogPlayList(self,Dialog):
         Dialog.setObjectName("Dialog")
@@ -1468,7 +1472,7 @@ class Ui():
         font.setPointSize(16)
         font.setWeight(75)
         labelName.setFont(font)
-        labelName.setText("사진의 이름을 입력하세요")
+        labelName.setText("영상의 url을 입력하세요")
 
         self.dialogPlayListBtn=QtWidgets.QToolButton(Dialog)
         self.dialogPlayListBtn.setGeometry(200,500,400,50)
@@ -1477,9 +1481,7 @@ class Ui():
         self.dialogPlayListBtn.setText("확인")
         self.dialogPlayListBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-        
         font.setPointSize(10)
-
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)

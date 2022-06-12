@@ -30,10 +30,10 @@ class Database:
         self.connect4=None
         self.cursor4=None    
         self.connect4=sqlite3.connect("src\DataOfUser.db")
-        self.column4=['sequance','id','playList']
-        self.row4=['INTEGER PRIMARY KEY','TEXT','TEXT']
+        self.column4=['sequance','id','url','video','time']
+        self.row4=['INTEGER PRIMARY KEY','TEXT','TEXT','TEXT','INT']
         self.cursor4=self.connect4.cursor()
-        self.rows4=['id','playList']
+        self.rows4=['id','url','video','time']
 
         self.connect5=None
         self.cursor5=None    
@@ -43,13 +43,12 @@ class Database:
         self.cursor5=self.connect5.cursor()
         self.rows5=['id','season','OOTD']
 
-
-
         self.create("user",self.column1,self.row1, self.cursor1)
         self.create("top",self.column2,self.row2, self.cursor2)
         self.create("bot",self.column3,self.row3, self.cursor3)
         self.create("OOTD",self.column5,self.row5, self.cursor5)
         self.create("playList",self.column4,self.row4, self.cursor4)
+
 
 #----------------------------------------------------------------------------------------#
     def create(self,user,column,row,cursor):
