@@ -556,7 +556,7 @@ class Ui():
         self.stackedWidget.addWidget(self.PageplayList)
 
         self.musicName=QtWidgets.QLabel(self.PageplayList)
-        self.musicName.setGeometry(114,441,550,73)
+        self.musicName.setGeometry(114,470,550,73)
         self.musicName.setStyleSheet("background-color:black")
         self.qPixmapVar = QPixmap()
         self.qPixmapVar.load("image/playListBar.png")
@@ -564,12 +564,12 @@ class Ui():
         self.musicName.setPixmap(self.qPixmapVar)
 
         self.videoName=QtWidgets.QLabel(self.PageplayList)
-        self.videoName.setGeometry(257,441,700,73)
+        self.videoName.setGeometry(257,470,700,73)
         font = QtGui.QFont()
         self.videoName.setStyleSheet("background-color:#00ffffff ; color:#000000;")
         font.setPointSize(10)
         self.videoName.setFont(font)
-        self.videoName.setText("슈프림팀 – 그땐 그땐 그땐")
+        self.videoName.setText("가수 – 곡")
 
 
         self.playMusicBtns=[]
@@ -615,6 +615,10 @@ class Ui():
         self.playBackBtn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
 
+        self.videoPlay=QtWidgets.QFrame(self.PageplayList)
+        self.videoPlay.setGeometry(75,25,680,420)
+        self.videoPlay.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white;")
+
         self.playListPic=QtWidgets.QLabel(self.PageplayList)
         self.playListPic.setGeometry(228,73,365,294)
         self.playListPic.setStyleSheet("background-color:black")
@@ -624,10 +628,10 @@ class Ui():
         self.qPixmapVar=self.qPixmapVar.scaled(365,294)
         self.playListPic.setPixmap(self.qPixmapVar)
         
-        self.videoPlay=QtWidgets.QFrame(self.PageplayList)
-        self.videoPlay.setGeometry(228,73,365,294)
-        self.videoPlay.setStyleSheet("background-color:#00ffffff ; border-style: solid; border-color : white; border-width: 1px;color:white;")
 
+
+
+        
         self.stackedWidget.addWidget(self.PageplayList)
 
         

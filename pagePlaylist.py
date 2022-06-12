@@ -12,7 +12,7 @@ from itsdangerous import exc
 import pafy
 import urllib.request
 from PyQt5.QtGui import *
-
+import sys
 
 class pagePlayList:
 
@@ -108,12 +108,11 @@ class PlayVideo:
     def btnEvent(self,num):
         self.play.PlayPause(num)
         if num==0:
-            self.timer.timeRestart()
+            pass
         elif num==1:
             self.ui.videoName.setText("")
-            self.timer.timerSet()
         elif num==2:
-            self.timer.timerStop()
+            print("멈추기")
         else :
             pass
 
@@ -129,49 +128,52 @@ class PlayVideo:
         self.play.changeVolume(Volume)
 
     def setVideoPlay(self,listData,num):
+
         qpixmap=QPixmap()
         qpixmap.load("")
         self.ui.playListPic.setPixmap(qpixmap)
         self.ui.playListPic.setStyleSheet("background-color:#00ffffff")
+        
+        self.ui.videoName.setText(listData[num][3])
+        
         url=listData[num][2]
         
-        self.play=Play(self.ui)
-        self.play.urlSet(url)
-        self.play.start()
+        self.play=Play(self.ui.videoPlay,url)
 
-class Play(QThread):
-    playvideo = pyqtSignal(int)  
-
-    def __init__(self,ui):
-        super().__init__()
-        self.timer=0
-        self.ui=ui
-    
-    def urlSet(self,url):
+import threading
+class Play(threading.Thread):
+    def __init__(self,ui_video,url):
+        threading.Thread.__init__(self)
         self.url=url
+        self.ui=ui_video
+        self.run()
+
         
     def changeVolume(self, Volume):
         self.playVideo.audio_set_volume(100-Volume)
 
     def run(self):
-        print("시작")
+        # for index in range(0,2):
         try:
-            self.video = pafy.new(self.url)
-        except KeyError:
-            self.video = pafy.new(self.url)
+            video=pafy.new(self.url)
+        except:pass
 
-        best = self.video.streams[0]
-        media = vlc.Media(best.url)
+        best = video.getbest()
+        playurl = best.url
+        Instance = vlc.Instance()
 
-        self.video = vlc.Instance().media_player_new()
+        self.video = Instance.media_player_new()
 
-        self.video.set_hwnd(int(self.ui.videoPlay.winId()))
+        Media = Instance.media_new(playurl)
 
-        self.video.set_media(media)
+        Media.get_mrl()
+
+        self.video.set_media(Media)
+
+        self.video.set_hwnd(int(self.ui.winId())) 
 
         self.video.play()
 
-        time.sleep(20)
 
         
     def playStop(self):
@@ -181,10 +183,15 @@ class Play(QThread):
         if num==0:
             if self.video.is_playing()==False:
                 self.video.play()
+                print("재생")
+
         elif num==1:
             self.video.stop()
+            print("멈춤")
         elif num==2:
             if self.video.is_playing():
                 self.video.pause()
+                print("일시정지")
+
         else:
             pass
