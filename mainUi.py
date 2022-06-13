@@ -1369,7 +1369,7 @@ class Ui():
         dialogBorder.setStyleSheet("background-color: white ;border-style: solid;border-color: #A0B4E6; border-width: 10px")
         Dialog.setStyleSheet("background-color : white;")
         self.dialogLabel = QtWidgets.QLabel(Dialog)
-        self.dialogLabel.setGeometry(200, 180, 400, 300)
+        self.dialogLabel.setGeometry(300, 180, 400, 300)
         font = QtGui.QFont()
         font.setFamily("함초롬돋움")
         font.setPointSize(18)
@@ -1671,10 +1671,8 @@ class Ui():
             season=1
         elif seasonCheck=='Summer':
             season=2
-
         elif seasonCheck=='Autum':
             season=3
-        
         elif seasonCheck=='Winter':
             season=4
 
@@ -1707,21 +1705,20 @@ class Ui():
                 font = QtGui.QFont()
                 font.setFamily("Bebas Neue")
                 font.setPointSize(9)
-                springImages=QtWidgets.QToolButton(self.horizontal_Top)
-                qPixmapVar = QPixmap()
-                image="OOTD/Spring/"+str(data[index][2])+".PNG"
-                print(image)
-                qPixmapVar.load(image)
-                qPixmapVar=qPixmapVar.scaled(150, 200)
-                icon = QIcon() # QIcon 생성
-                icon.addPixmap(qPixmapVar)
-                springImages.setIcon(icon)
-                springImages.setIconSize(QtCore.QSize(150, 200))
+                springImages=QtWidgets.QLabel(self.horizontal_Top)
+
+                qPixmapSpring = QPixmap()
+                springimage="ootd/Spring/"+str(data[index][3])+".png"
+                print(springimage)
+                qPixmapSpring.load(springimage)
+                qPixmapSpring=qPixmapSpring.scaled(250, 300)
+                springImages.setPixmap(qPixmapSpring)
+
                 springImages.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
                 springImages.setFont(font)
                 springImages.setText(data[index][3])
-                springImages.setFixedWidth(150)
-                springImages.setFixedHeight(200)
+                springImages.setFixedWidth(250)
+                springImages.setFixedHeight(300)
                 springImages.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
                 if (index+2)%2==0:
                     self.verticalLayoutSpring.addWidget(springImages,0,number)
@@ -1759,21 +1756,20 @@ class Ui():
                 font = QtGui.QFont()
                 font.setFamily("Bebas Neue")
                 font.setPointSize(9)
-                SummerImages=QtWidgets.QToolButton(self.horizontal_Top)
-                qPixmapVar = QPixmap()
-                image="OOTD/Summer/"+str(data[index][2])+".PNG"
-                print(image)
-                qPixmapVar.load(image)
-                qPixmapVar=qPixmapVar.scaled(150, 200)
-                icon = QIcon() # QIcon 생성
-                icon.addPixmap(qPixmapVar)
-                SummerImages.setIcon(icon)
-                SummerImages.setIconSize(QtCore.QSize(150, 200))
+                SummerImages=QtWidgets.QLabel(self.horizontal_Top)
+
+                qPixmapSummer = QPixmap()
+                summerimage="ootd/"+str(data[index][3])+".png"
+                print(summerimage)
+                qPixmapSummer.load(summerimage)
+                qPixmapSummer=qPixmapSummer.scaled(250, 300)
+                SummerImages.setPixmap(qPixmapSummer)
+                
                 SummerImages.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
                 SummerImages.setFont(font)
                 SummerImages.setText(data[index][3])
-                SummerImages.setFixedWidth(150)
-                SummerImages.setFixedHeight(200)
+                SummerImages.setFixedWidth(250)
+                SummerImages.setFixedHeight(300)
                 SummerImages.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
                 if (index+2)%2==0:
                     self.verticalLayoutSummer.addWidget(SummerImages,0,number)
@@ -1812,21 +1808,23 @@ class Ui():
                 font = QtGui.QFont()
                 font.setFamily("Bebas Neue")
                 font.setPointSize(9)
-                AutumnImages=QtWidgets.QToolButton(self.horizontal_Top)
-                qPixmapVar = QPixmap()
-                image="OOTD/Autumn/"+str(data[index][2])+".PNG"
-                print(image)
-                qPixmapVar.load(image)
-                qPixmapVar=qPixmapVar.scaled(150, 200)
-                icon = QIcon() # QIcon 생성
-                icon.addPixmap(qPixmapVar)
-                AutumnImages.setIcon(icon)
-                AutumnImages.setIconSize(QtCore.QSize(150, 200))
+
+                AutumnImages=QtWidgets.QLabel(self.horizontal_Top)
                 AutumnImages.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
+                
+                qPixmapAutum = QPixmap()
+                imageAutum="ootd/가을/"+str(data[index][3])+".png"
+                print(imageAutum)
+  
+                qPixmapAutum.load(imageAutum)
+                qPixmapAutum=qPixmapAutum.scaled(250, 300)
+                AutumnImages.setPixmap(qPixmapAutum)
+                
+
                 AutumnImages.setFont(font)
                 AutumnImages.setText(data[index][3])
-                AutumnImages.setFixedWidth(150)
-                AutumnImages.setFixedHeight(200)
+                AutumnImages.setFixedWidth(250)
+                AutumnImages.setFixedHeight(300)
                 AutumnImages.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
                 if (index+2)%2==0:
                     self.verticalLayoutAutumn.addWidget(AutumnImages,0,number)
@@ -1863,24 +1861,23 @@ class Ui():
             number=0
             number2=0
             for index in range(0,len(data)):
+                
                 font = QtGui.QFont()
                 font.setFamily("Bebas Neue")
                 font.setPointSize(9)
-                WinterImages=QtWidgets.QToolButton(self.horizontal_Top)
-                qPixmapVar = QPixmap()
-                image="OOTD/Winter/"+str(data[index][3])+".PNG"
-                print(image)
-                qPixmapVar.load(image)
-                qPixmapVar=qPixmapVar.scaled(150, 200)
-                icon = QIcon() # QIcon 생성
-                icon.addPixmap(qPixmapVar)
-                WinterImages.setIcon(icon)
-                WinterImages.setIconSize(QtCore.QSize(150, 200))
+                WinterImages=QtWidgets.QLabel(self.horizontal_Top)
                 WinterImages.setStyleSheet("background-color:black ; border-style: solid; border-color : white; border-width: 1px;color:white")
+                qPixmapWinter = QPixmap()
+                imageWinter="ootd/Winter/"+str(data[index][3])+".png"
+                print(imageWinter)
+                qPixmapWinter.load('image\closetRight.png')
+                qPixmapWinter=qPixmapWinter.scaled(250, 300)
+                WinterImages.setPixmap(qPixmapWinter)
+
                 WinterImages.setFont(font)
                 WinterImages.setText(data[index][3])
-                WinterImages.setFixedWidth(150)
-                WinterImages.setFixedHeight(200)
+                WinterImages.setFixedWidth(250)
+                WinterImages.setFixedHeight(300)
                 WinterImages.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
                 if (index+1)%5==0:
                     number2=0

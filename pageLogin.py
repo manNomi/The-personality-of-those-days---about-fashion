@@ -15,9 +15,7 @@ class LoginPage:
         self.Id=pageFindId.FindId(self .ui,self.db)
         self.Pw=pageFindPw.FindPw(self.ui,self.db)
         self.mainPage=pageMain.MainPage(self.ui,self.db)
-
         self.ui.stackedWidget.setCurrentWidget(self.ui.loginPage)
-
         self.btnCheckMover()
         self.btnJoinMover()
         self.btnFindIdMover()
